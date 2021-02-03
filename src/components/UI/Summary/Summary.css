@@ -1,0 +1,17 @@
+.Summary {
+  background: #f8f8f8;
+  border-radius: 10px;
+  padding: 35px;
+}
+.SummaryItem {
+  display: flex;
+}
+.SummaryItem > .Key,
+.SummaryItem > .Value {
+  width: fit-content;
+}
+.DottedDivider {
+  border-bottom: 1px dotted #c1c1c1;
+  flex: 1;
+  width: 90%;
+}

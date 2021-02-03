@@ -1,0 +1,13 @@
+.Cart {
+  padding: 0 5%;
+}
+.CartName {
+  display: flex;
+  align-items: center;
+}
+.CartName > img {
+  margin-right: 10px;
+}
+.CartName > p {
+  margin: 0;
+}

@@ -13,6 +13,7 @@ import SideNav from "./components/UI/SideNav/SideNav";
 import Signup from "./components/Signup/Signup";
 import Login from "./components/Login/Login";
 import Accounts from "./components/Accounts/Accounts";
+import Cart from "./components/Cart/Cart";
 
 function App() {
   const [show, setShowSideNav] = useState(false);
@@ -25,6 +26,7 @@ function App() {
         <Switch>
           <Route path="/product/:id" component={ProductDetail} />
           <Route path="/catalogue" component={Catalogue} />
+          <Route path="/cart" component={Cart} />
           <Route path="/category" component={CategorySection} />
           <Route path="/accounts" component={Accounts} />
           <Route path="/signup" component={Signup} />
