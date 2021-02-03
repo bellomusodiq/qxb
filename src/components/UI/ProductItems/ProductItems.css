@@ -1,0 +1,20 @@
+.ProductItems {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 0 100px 0;
+  flex-wrap: wrap;
+}
+.ProductItemContent {
+  margin-top: 20px;
+}
+@media screen and (max-width: 1000px) {
+  .ProductItems > * {
+    width: 32%;
+    margin-top: 20px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .ProductItems > * {
+    width: 48%;
+  }
+}

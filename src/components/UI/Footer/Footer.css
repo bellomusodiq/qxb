@@ -1,0 +1,60 @@
+.Footer {
+  color: #171717;
+  font-family: "TT Norms";
+}
+.Footer div > a > i {
+  margin-right: 10px;
+}
+.FooterTop {
+  padding: 50px 5%;
+  background: #cccccc;
+  display: grid;
+  grid-template-columns: 15% 15% 15% 15% auto;
+  grid-column-gap: 10px;
+  box-sizing: border-box;
+}
+.FooterTop:not(.Subscribe) > div {
+  display: flex;
+  flex-direction: column;
+}
+.FooterTop a,
+.FooterTop p {
+  color: #171717;
+  margin: 10px 0;
+  font-size: 1.2em;
+}
+.SubscribeForm {
+  display: flex;
+}
+.SubscribeForm input {
+  background-color: #cccccc;
+  border: 1.2px solid #a3a3a3;
+  border-radius: 6px;
+  box-sizing: border-box;
+  padding: 5px 15px;
+  font-size: 1.4em;
+}
+.FooterBottom {
+  background: #171717;
+  color: #cccccc;
+  padding: 10px 5%;
+  font-size: 1.4em;
+  display: flex;
+}
+.FooterBottom > p {
+  margin-right: 5%;
+}
+@media screen and (max-width: 500px) {
+  .FooterTop {
+    grid-template-columns: 50% 50%;
+  }
+  .FooterTop > div {
+    margin-top: 30px;
+  }
+  .SubscribeForm {
+    width: 200%;
+  }
+  .FooterBottom > p {
+    font-size: 0.7em
+  }
+}

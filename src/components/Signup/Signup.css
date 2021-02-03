@@ -1,0 +1,41 @@
+.Signup {
+  margin: 50px;
+  padding: 0 10%;
+  margin-bottom: 150px;
+}
+.custom-form {
+  padding: 15px 20px;
+}
+.SignupButton {
+  margin-top: 50px;
+}
+.SignupButton > * {
+  width: 100%;
+}
+.AlternateSignin > p {
+  width: 30%;
+  font-family: "TT Norms";
+}
+.AlternateSignin > p > span {
+  text-decoration: underline;
+  font-weight: bold;
+}
+.Oauths > i {
+  margin: 0 10px;
+  color: #a3a3a3;
+}
+@media screen and (max-width: 500px) {
+  .Signup {
+    padding: 15px 10%;
+    margin: 50px 0;
+  }
+  .AlternateSignin {
+    margin-top: 50px;
+  }
+  .AlternateSignin > p {
+    width: 100%;
+  }
+  .Oauths > i {
+    font-size: 2em !important;
+  }
+}

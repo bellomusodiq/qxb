@@ -1,0 +1,75 @@
+.CategorySection {
+  padding: 0 5%;
+}
+.FilterContent > h2,
+.FilterContent h3 {
+  font-family: "Playfair Display";
+}
+.ant-slider-track,
+.ant-slider-handle {
+  background: #575757 !important;
+  color: #575757 !important;
+  border: none;
+}
+.PriceValues {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.PriceValue {
+  width: 40%;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #eeeeee;
+  box-sizing: border-box;
+}
+.Divider {
+  height: 2px;
+  width: 15%;
+  background: #eeeeee;
+}
+.ColorFilters {
+  display: flex;
+  flex-wrap: wrap;
+}
+.ColorFilter {
+  width: 25px;
+  height: 25px;
+  margin: 10px 7px;
+}
+.CategoryBanner {
+  height: 300px;
+  margin-bottom: 30px;
+  padding: 0 15%;
+  display: flex;
+  background: #C4C4C4;
+  justify-content: space-between;
+  align-items: center;
+}
+.CategoryBanner > div > p {
+  font-size: 4em !important;
+  margin: 0;
+  font-family: "TT Norms";
+}
+.CategoryBanner > img {
+  height: 100%;
+}
+.DiscoverButton {
+  display: none;
+}
+@media screen and (max-width: 500px) {
+  .CategoryBanner {
+    height: 200px;
+    margin-bottom: 0;
+    padding: 0 5%;
+  }
+  .CategoryBanner > div > p {
+    font-size: 1em !important;
+  }
+  .DiscoverButton {
+    display: block;
+    margin-top: 20px;
+  }
+}

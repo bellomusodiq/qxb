@@ -1,0 +1,78 @@
+.Accounts {
+  padding: 0 5%;
+  font-family: "TT Norms";
+}
+.AccountsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.AccountsNav {
+  display: flex;
+  justify-content: space-between;
+}
+.AccountsNav > * {
+  width: 23.5%;
+  margin-bottom: 50px;
+}
+.AccountsNav > a > * {
+  width: 100%;
+  border-color: #575757 !important;
+  color: #575757 !important;
+}
+.AccountsNavActive > a > * {
+  border-color: black !important;
+  color: black !important;
+}
+.SaveChanges {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+.AddAddress {
+  display: flex;
+  align-items: center;
+}
+.AddAddress > i {
+  margin-right: 20px;
+}
+.LinkAccount {
+  margin-bottom: 20px;
+}
+.AddAddress > p, .LinkAccount > p {
+  color: #a3a3a3;
+  margin: 0;
+}
+.DeliveryAddress > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-self: stretch;
+  height: 100%;
+  padding-bottom: 30px;
+}
+.DeleteAccount {
+  display: flex;
+  align-items: center;
+  color: #a3a3a3;
+  width: fit-content;
+  cursor: pointer;
+}
+.DeleteAccount > p {
+  margin: 0;
+  margin-left: 10px;
+}
+@media screen and (max-width: 500px) {
+  .SaveChanges > * {
+    width: 100%;
+  }
+  .DeliveryAddress {
+    margin-bottom: 50px;
+  }
+  .AccountsNav > a * {
+    font-size: 0.65em;
+    padding: 10px 5px;
+  }
+}

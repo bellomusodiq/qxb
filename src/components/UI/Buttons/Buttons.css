@@ -1,0 +1,38 @@
+.Button {
+  border: none;
+  cursor: pointer;
+  font-family: "TT Norms";
+  border: 1px solid black;
+}
+.CircleButton {
+  padding: 15px;
+  border-radius: 50%;
+  box-shadow: 0px 2px 70px rgba(0, 0, 0, 0.16);
+}
+.SvgIcon {
+  height: 1.8em;
+}
+.DefaultButton {
+  padding: 15px;
+  width: 250px;
+  border-radius: 6px;
+}
+@media screen and (max-width: 800px) {
+  .CircleButton {
+    padding: 10px;
+  }
+  i {
+    font-size: 1em !important;
+  }
+  .SvgIcon {
+    height: 1em;
+  }
+  .DefaultButton {
+    width: 180px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .DefaultButton {
+    font-size: 0.8em;
+  }
+}

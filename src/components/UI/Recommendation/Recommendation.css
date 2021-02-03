@@ -1,0 +1,19 @@
+.Recommendation {
+  margin-top: 75px;
+}
+.Recommendation > h2 {
+  font-family: "Playfair Display";
+  font-size: 2em;
+  text-align: center;
+}
+@media screen and (max-width: 500px) {
+  .RecommendedItems {
+    display: flex;
+    overflow-x: auto  !important;
+    flex-wrap: nowrap !important;
+  }
+  .RecommendedItems > * {
+    flex: 0 0 auto;
+    margin: 0 20px;
+  }
+}

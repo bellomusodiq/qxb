@@ -1,0 +1,204 @@
+.ProductDetail {
+  padding: 0 5%;
+  margin-bottom: 50px;
+}
+.Product {
+  padding: 50px 30px;
+}
+.ProductImage > img {
+  width: 100%;
+  border-radius: 10px;
+}
+.ProductImages {
+  display: flex;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+.ProductImages > img {
+  width: 150px;
+  height: 150px;
+  margin: 10px 15px;
+  border-radius: 5px;
+}
+.ColorSelect > p {
+  font-weight: bold;
+  font-size: 1.3em;
+}
+.ColorSelectItems {
+  display: flex;
+  flex-wrap: wrap;
+}
+.ColorItem {
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  margin-right: 15px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ColorItem > i {
+  color: white;
+  font-size: 1.6em;
+}
+.Quantities {
+  display: flex;
+  margin-top: 30px;
+  align-items: center;
+}
+.Quantities > p {
+  width: 55%;
+  color: #a3a3a3;
+  font-family: "TT Norms";
+  font-size: 2em;
+  margin: 0;
+}
+.Counter {
+  display: flex;
+  align-items: center;
+}
+.Counter > *:not(.CounterButton) {
+  margin: 0;
+  width: 35px;
+  height: 30px;
+  text-align: center;
+  border: 1px solid #cccccc;
+  margin: 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  color: #323232;
+}
+.CounterButton {
+  cursor: pointer;
+}
+.ProductDetailButton {
+  padding-left: 30px;
+  padding-right: 30px;
+  width: 60%;
+  margin-top: 30px;
+}
+.AddToCartButton {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.AddToCartButton > div {
+  flex: 1;
+  font-weight: bolder;
+  font-size: 1.2em;
+  padding-left: 8%;
+  text-align: left;
+}
+.AddToCartButton > img {
+  border: 1px solid white;
+  border-radius: 50%;
+  padding: 5px;
+  height: 40px;
+  width: 40px;
+}
+.ProductPrice {
+  display: flex;
+  align-items: flex-end;
+  font-family: "TT Norms";
+  margin-bottom: 20px;
+}
+.ProductPrice > h3 {
+  font-size: 2.5em;
+  font-weight: bold;
+  margin: 0;
+  margin-right: 5px;
+}
+.ProductPrice > p {
+  position: relative;
+  top: 5px;
+  color: #a3a3a3;
+}
+.ProductDetailTitle {
+  font-family: "Playfair Display";
+  font-size: 2.8em;
+}
+.Description {
+  font-family: 'TT Norms';
+}
+.ColorSelect {
+  margin-bottom: 30px;
+}
+.ProductMore {
+  font-family: 'TT Norms';
+}
+.ProductMore > div {
+  border: 1px solid black;
+  padding: 10px;
+  margin: 20px;
+}
+.ProductMore > div a {
+  margin-left: 20px;
+  text-decoration: underline;
+}
+.ProductMore > div > h4 {
+  font-weight: bold;
+}
+.CustomerReviews {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+.CustomerReviews > * {
+  width: 32.8%;
+  font-family: 'TT Norms';
+  color: #575757;
+}
+.CustomerReviewDelete {
+  cursor: pointer;
+}
+@media screen and (max-width: 480px) {
+  .CustomerReviews {
+    flex-direction: column;
+  }
+  .CustomerReviews > * {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .Product {
+    padding: 5px;
+  }
+  .ProductImagesContainer {
+    display: flex;
+    justify-content: space-between;
+  }
+  .ProductImage {
+    width: 70% !important;
+  }
+  .ProductImage > img {
+    width: 100% !important;
+  }
+  .ProductImages {
+    width: 25%;
+    margin-top: 0;
+  }
+  .ProductImages > img {
+    width: 100% !important;
+    margin: 10px 0;
+    height: 65px;
+  }
+  .ProductDetailTitle {
+    font-size: 2em;
+  }
+  .ProductDetailButton {
+    width: 100%;
+  }
+  .ProductMore {
+    padding: 0;
+  }
+  .ProductMoreCol {
+    margin-top: 30px;
+  }
+  .CustomerReviews > * {
+    width: 90%;
+    margin: auto;
+    margin-bottom: 15px;
+  }
+}

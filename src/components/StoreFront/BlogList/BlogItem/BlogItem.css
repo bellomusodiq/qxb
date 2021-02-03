@@ -1,0 +1,55 @@
+.BlogItemContainer {
+  width: 31%;
+}
+.BlogItem > img {
+  width: 100%;
+  border-radius: 10px;
+}
+.BlogContent {
+  padding: 25px;
+}
+.BlogContent > h4 {
+  font-family: "TT Norms";
+  font-size: 1.6em;
+  font-weight: bold;
+  line-height: 1;
+  margin-bottom: 30px;
+}
+.BlogContent > p {
+  color: #999999;
+}
+.BlogDescription {
+  font-size: 1.2em;
+  line-height: 1.2;
+}
+@media screen and (max-width: 1000px) {
+  .BlogContent > h4 {
+    font-size: 1.2em;
+  }
+  .BlogDescription {
+    font-size: 1em;
+  }
+  .BlogDate {
+    font-size: 0.8em;
+  }
+}
+@media screen and (max-width: 500px) {
+  .BlogItemContainer {
+    width: 45vw !important;
+    flex: 0 0 auto;
+    margin: 0 20px;
+  }
+  .BlogContent > h4 {
+    width: 100% !important;
+    font-size: 0.8em;
+  }
+  .BlogContent {
+    padding: 10px;
+  }
+  .BlogDescription {
+    font-size: 0.7em;
+  }
+  .BlogDate {
+    font-size: 0.65em;
+  }
+}

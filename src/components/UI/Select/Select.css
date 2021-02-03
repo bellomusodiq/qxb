@@ -1,0 +1,10 @@
+.Select {
+  width: 100% !important;
+  font-family: "TT Norms" !important;
+}
+.Select > .ant-select-selector {
+  height: 60px !important;
+  font-family: "TT Norms" !important;
+  display: flex;
+  align-items: center;
+}

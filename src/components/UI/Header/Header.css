@@ -1,0 +1,106 @@
+.Header {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  height: max-content;
+  margin-top: 20px;
+}
+.HeaderTop {
+  display: flex;
+  padding: 15px 5%;
+  background: #eeeeee;
+}
+.Location {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.HeaderText {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.HeaderText > h1 {
+  font-family: Pairfair Display;
+  font-weight: normal;
+  margin: 0;
+}
+.HeaderBottom {
+  display: flex;
+  justify-content: space-between;
+  padding: 50px 5%;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+}
+a {
+  text-decoration: none;
+}
+a:active,
+a:after,
+a:visited {
+  color: inherit;
+}
+nav > a {
+  color: #a3a3a3 !important;
+}
+nav > a:hover {
+  color: #171717 !important;
+}
+.Logo {
+  background: #171717;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 10px 10px 0 10px;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+.Logo > img {
+  height: 100%;
+}
+.Badged {
+  position: relative;
+}
+.BadgedCounter {
+  z-index: 2;
+  bottom: 20%;
+  left: 100%;
+  position: absolute;
+  background: white;
+  color: black;
+  width: fit-content;
+  box-sizing: border-box;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media screen and (max-width: 1240px) {
+  nav {
+    width: 90%;
+  }
+  .HeaderBottom {
+    align-items: center;
+  }
+  .Logo {
+    height: 30px!important;
+    padding: 5px 5px 0 5px;
+    display: flex;
+    align-items: center;
+  }
+  nav button {
+    transform: scale(0.8);
+  }
+}
+@media screen and (max-width: 500px) {
+  .Header {
+    display: none;
+  }
+}

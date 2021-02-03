@@ -1,0 +1,91 @@
+.CollectionBanner {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  width: 100%;
+  margin-bottom: 100px;
+}
+.CollectionBanner1 {
+  background-color: #dec8f3;
+  background-image: url("../../../assets/images/collections1.png");
+  background-repeat: no-repeat;
+  background-position: right;
+  height: 390px;
+  width: 75%;
+  border-radius: 10px;
+  padding-left: 5%;
+  display: flex;
+  align-items: center;
+}
+.CollectionBanner1 > h1 {
+  font-size: 5em;
+  width: 40%;
+  line-height: 1;
+  color: #171717;
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: normal;
+}
+.CollectionBanner > div:not(.CollectionBanner1) {
+  width: 22%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+}
+.CollectionBanner2 {
+  height: 56%;
+  border-radius: 10px;
+}
+.CollectionBanner2 > img {
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+  border-radius: 10px;
+}
+.CollectionBanner3 {
+  background-color: #f9cada;
+  background-image: url("../../../assets/images/collections3.png");
+  background-repeat: no-repeat;
+  background-position: right;
+  height: 38%;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  padding-left: 5%;
+  color: #171717;
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.8em;
+}
+@media screen and (max-width: 500px) {
+  .CollectionBanner {
+    flex-direction: column;
+  }
+  .CollectionBanner1, .CollectionBanner2, .CollectionBanner3 {
+    width: 100%;
+    height: 150px;
+  }
+  .CollectionBanner > div:not(.CollectionBanner1) {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+  }
+  .CollectionBanner1 {
+    height: 150px;
+  }
+  .CollectionBanner1 > h1 {
+    font-size: 1.8em;
+    width: 60%;
+  }
+  .CollectionBanner2 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .CollectionBanner3 > h3 {
+    font-size: 1em !important;
+  }
+}

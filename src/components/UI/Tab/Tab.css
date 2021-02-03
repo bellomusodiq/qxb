@@ -1,0 +1,34 @@
+.custom-tab {
+  width: 100%;
+}
+.custom-tab > .ant-tabs-nav {
+  margin: auto;
+}
+.custom-tab .ant-tabs-ink-bar {
+  display: none;
+}
+.custom-tab .ant-tabs-tabs {
+  font-family: "TT Norms";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 18px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #183039;
+}
+.custom-tab * {
+  border: none !important;
+  background-color: white;
+}
+.ant-tabs-tab,
+.ant-tabs-tab:hover,
+.ant-tabs-tab:active,
+.ant-tabs-tab::after {
+  color: #a3a3a3;
+  font-weight: bolder;
+}
+.ant-tabs-tab-active > div {
+  font-weight: bolder !important;
+  color: #183039 !important;
+}

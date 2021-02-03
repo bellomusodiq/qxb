@@ -1,0 +1,117 @@
+.ProductItemContainer {
+  width: 23%;
+}
+.ProductItem {
+  /* margin-bottom: 40px; */
+}
+.ProductItem > img {
+  /* width: 325px;
+  height: 325px; */
+  width: 100%;
+  margin: auto;
+  object-fit: cover;
+  border-radius: 3%;
+  border: 0.5px solid #cccccc !important;
+}
+.ProductTitle {
+  width: 75%;
+}
+.ProductTitle > h2 {
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: normal;
+  letter-spacing: 0.01em;
+  color: #323232;
+}
+.PriceCarts {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.Badged,
+.Badged > img.SvgIcon {
+  background-color: transparent !important;
+}
+.Carts {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 40%;
+}
+.Carts .Badged {
+  width: 25px;
+  height: 25px;
+}
+.Carts > * {
+  transform: scale(0.75);
+}
+.Favourite {
+  background-color: #eeeeee !important;
+}
+.AddToCart {
+  border: 1px solid black !important;
+}
+.AddToCart > .Badged > img {
+  color: black !important;
+}
+.Badged > i.far.fa-heart {
+  background-color: transparent !important;
+  color: black;
+}
+.PriceCarts > .Price {
+  font-weight: bolder;
+}
+@media screen and (max-width: 1250px) {
+  .ProductItemContainer {
+    width: 24%;
+  }
+  .ProductItem {
+    /* padding: 20px 15px; */
+  }
+  .ProductItem > img {
+    /* width: 190px;
+    height: 190px; */
+    width: 100%;
+    margin: auto !important;
+  }
+  .ProductTitle > h2 {
+    font-size: 1em;
+  }
+  .Carts > * {
+    transform: scale(0.6);
+  }
+  .Price {
+    display: flex;
+    align-items: center;
+  }
+  .Price {
+    width: 60%;
+  }
+  .PriceCarts > .Price {
+    font-size: 0.8em;
+  }
+}
+@media screen and (max-width: 800px) {
+  .ProductItem > img {
+    width: 100% !important;
+  }
+  .ProductTitle {
+    width: 100%;
+  }
+  .Price > h2 {
+    font-size: 1.4em;
+  }
+}
+@media screen and (max-width: 500px) {
+  .ProductItem > img {
+    /* width: 130px;
+    height: 130px; */
+    width: 100%;
+  }
+  .ProductTitle > h2 {
+    font-size: 0.8em;
+  }
+  .Price > h2 {
+    font-size: 1.2em;
+  }
+}

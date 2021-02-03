@@ -1,0 +1,48 @@
+@media screen and (min-width: 500px) {
+  .HeaderMobile {
+    display: none;
+  }
+}
+.HeaderMobileTop {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  background: #cccccc;
+}
+.HeaderMobileLogo {
+  display: flex;
+  justify-content: center;
+  padding: 5px 5%;
+  font-family: Playfair Display;
+  font-style: normal;
+  font-weight: normal;
+  text-align: center;
+  color: #171717;
+  font-size: 0.6em;
+}
+.HeaderMobileLogo > h1 {
+  margin: 0;
+  line-height: 1.8;
+}
+.HeaderMobileLogo > .Logo {
+  height: 35px !important;
+  margin-right: 10px;
+}
+.HeaderMobileNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 5%;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.06);
+  margin-bottom: 10px;
+}
+.HeaderMobileNav > nav {
+  width: 50%;
+}
+.HeaderMobileNav > nav button {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

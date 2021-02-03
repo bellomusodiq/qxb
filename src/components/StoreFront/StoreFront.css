@@ -1,0 +1,95 @@
+.StoreFront {
+  padding: 0 5%;
+}
+.StoreFrontBanner {
+  background-color: #cccccc;
+  height: 695px;
+  background-image: url("../../assets/images/store-front.png");
+  background-repeat: no-repeat;
+  background-position: right;
+}
+.StoreFrontBanner > h1 {
+  position: absolute;
+  left: 17%;
+  top: 17.51%;
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 150px;
+  line-height: 202px;
+  color: #171717;
+  mix-blend-mode: normal;
+}
+.StoreFrontBanner > h1 > span {
+  color: white;
+}
+.StoreFrontBannerBtn {
+  position: absolute;
+  left: 17%;
+  top: 75.51%;
+}
+.TopCategoriesContainer {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.TopCategoriesContainer > h3 {
+  font-family: "Playfair Display";
+  font-size: 36px;
+  margin-bottom: 30px;
+}
+.TopCategories {
+  display: flex;
+  flex-wrap: wrap;
+}
+.TopCategories > * {
+  margin: 10px 20px !important;
+  width: 250px;
+}
+.LinkCatalog {
+  margin: auto;
+  margin-bottom: 150px;
+}
+@media screen and (max-width: 1250px) {
+  .StoreFrontBanner {
+    height: 470px !important;
+    width: 100% !important;
+  }
+  .StoreFrontBanner > h1 {
+    font-size: 70px;
+    left: 9%;
+    top: 20%;
+    line-height: 1.2;
+  }
+  .StoreFrontBannerBtn {
+    left: 9%;
+    top: 60% !important;
+  }
+  .TopCategories > * {
+    margin: 10px !important;
+    width: 200px !important;
+  }
+}
+@media screen and (max-width: 500px) {
+  .StoreFrontBanner {
+    display: none;
+  }
+  h3 {
+    font-size: 1.5em !important;
+  }
+  .TopCategories {
+    display: flex;
+    justify-content: space-between;
+  }
+  .TopCategoriesContainer {
+    margin-top: 50px !important;
+  }
+  .LinkCatalog {
+    display: flex;
+    margin: auto;
+    margin-bottom: 50px;
+    margin-top: -50px;
+  }
+}

@@ -1,0 +1,31 @@
+.starReviews {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.Stars > i {
+  margin: 0 1.5px;
+}
+.Reviews {
+  color: #cccccc;
+}
+.Reviews > i {
+  margin-right: 7.5px;
+}
+.Reviews > span {
+  color: black;
+}
+.Reviews > span > span {
+  text-decoration: underline #cccccc;
+}
+.ProductStarReviews {
+  font-size: 2em;
+}
+@media screen and (max-width: 1000px) {
+  .starReviews {
+    font-size: 0.6em;
+  }
+  .ProductStarReviews {
+    font-size: 1.1em;
+  }
+}

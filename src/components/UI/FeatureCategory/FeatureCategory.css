@@ -1,0 +1,17 @@
+.FeatureCategory {
+  margin-top: 100px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.FeatureCategory > h3 {
+  font-family: "Playfair Display";
+  font-size: 36px;
+  margin-bottom: 30px;
+}
+@media screen and (max-width: 500px) {
+  .FeatureCategory {
+    margin-top: 50px;
+  }
+}
