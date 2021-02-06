@@ -27,12 +27,12 @@ const HeaderMobile = ({ openSideNav }) => {
           <nav>
             <Link to="/">
               <CircleButton>
-                <i className="fas fa-search fa-2x"></i>
+                <i className="fas fa-search fa-1x"></i>
               </CircleButton>
             </Link>
             <Link to="/">
               <CircleButton>
-                <i className="far fa-user fa-2x"></i>
+                <i className="far fa-user fa-1x"></i>
               </CircleButton>
             </Link>
             <Link to="/">

@@ -5,33 +5,23 @@
   border: 1px solid black;
 }
 .CircleButton {
-  padding: 15px;
+  padding: 7px;
   border-radius: 50%;
   box-shadow: 0px 2px 70px rgba(0, 0, 0, 0.16);
-}
-.SvgIcon {
-  height: 1.8em;
+  width: 40px;
+  height: 40px;
 }
 .DefaultButton {
   padding: 15px;
   width: 250px;
   border-radius: 6px;
 }
-@media screen and (max-width: 800px) {
-  .CircleButton {
-    padding: 10px;
-  }
-  i {
-    font-size: 1em !important;
-  }
-  .SvgIcon {
-    height: 1em;
-  }
+@media screen and (max-width: 1440px) {
   .DefaultButton {
     width: 180px;
   }
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 480px) {
   .DefaultButton {
     font-size: 0.8em;
   }

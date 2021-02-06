@@ -1,16 +1,13 @@
 .Collections {
   width: 90%;
 }
-.CollectionsCard {
-  padding: 46px 43px 47px 58px;
-}
 .CollectionsCardHeader {
   font-family: Playfair Display;
   font-style: normal !important;
   font-weight: normal !important;
   color: #171717;
 }
-@media screen and (max-width: 1250px) {
+@media screen and (max-width: 1440px) {
   .CollectionsCard {
     padding: 20px 15px;
   }

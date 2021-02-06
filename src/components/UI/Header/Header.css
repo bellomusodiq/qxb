@@ -20,6 +20,7 @@
   flex: 1;
   display: flex;
   justify-content: center;
+  height: 40px;
 }
 .HeaderText > h1 {
   font-family: Pairfair Display;
@@ -29,7 +30,7 @@
 .HeaderBottom {
   display: flex;
   justify-content: space-between;
-  padding: 50px 5%;
+  padding: 50px 5% 25px;
 }
 nav {
   display: flex;
@@ -99,8 +100,11 @@ nav > a:hover {
     transform: scale(0.8);
   }
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 480px) {
   .Header {
     display: none;
+  }
+  nav i {
+    font-size: 0.6em;
   }
 }

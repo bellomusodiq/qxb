@@ -11,3 +11,6 @@
 .CartName > p {
   margin: 0;
 }
+.DeleteBtn {
+  font-weight: bold;
+}

@@ -1,17 +1,33 @@
 .Summary {
   background: #f8f8f8;
   border-radius: 10px;
-  padding: 35px;
+  padding: 10px 35px;
+  margin-bottom: 30px;
 }
 .SummaryItem {
   display: flex;
+  margin: 30px 0;
 }
 .SummaryItem > .Key,
 .SummaryItem > .Value {
   width: fit-content;
 }
+.SummaryItem > .Value {
+  font-weight: bold;
+}
 .DottedDivider {
   border-bottom: 1px dotted #c1c1c1;
   flex: 1;
   width: 90%;
+}
+.DottedDividerFull {
+  border-bottom: 1px dotted #c1c1c1;
+}
+.SummaryCheckout > * {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.SummaryNote {
+  color: #999;
+  text-align: center;
 }

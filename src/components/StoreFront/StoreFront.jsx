@@ -12,7 +12,7 @@ import CatalogueBanner from "../UI/CatalogueBanner/CatalogueBanner";
 const StoreFront = () => {
   return (
     <>
-      <CatalogueBanner show={window.screen.width <= 500} />
+      <CatalogueBanner show={window.screen.width <= 480} />
       <div className="StoreFront">
         <Row gutter={{ md: 0, lg: 10, xl: 0 }} justify="space-around">
           <Col xs={0} lg={7}>

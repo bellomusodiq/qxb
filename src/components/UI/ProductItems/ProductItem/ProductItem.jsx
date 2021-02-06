@@ -23,7 +23,7 @@ const ProductItem = ({darkButton}) => (
             <div className="Carts">
               <CircleButton background="black" classNames={!darkButton ? "Favourite": ""} >
                 <div className="Badged" >
-                  <i className="far fa-heart fa-2x" style={{color: darkButton? "white": "black"}} ></i>
+                  <i className="far fa-heart" style={{color: darkButton? "white": "black"}} ></i>
                 </div>
               </CircleButton>
               <CircleButton background="white" classNames="AddToCart" >

@@ -1,5 +1,6 @@
 .ProductItemContainer {
   width: 23%;
+  margin-bottom: 25px;
 }
 .ProductItem {
   /* margin-bottom: 40px; */
@@ -39,17 +40,25 @@
   width: 40%;
 }
 .Carts .Badged {
-  width: 25px;
-  height: 25px;
+  width: 60%;
+  height: 60%;
 }
 .Carts > * {
-  transform: scale(0.75);
+  transform: scale(0.85);
 }
 .Favourite {
   background-color: #eeeeee !important;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .AddToCart {
   border: 1px solid black !important;
+  padding: 0!important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .AddToCart > .Badged > img {
   color: black !important;
@@ -57,9 +66,16 @@
 .Badged > i.far.fa-heart {
   background-color: transparent !important;
   color: black;
+  font-size: 1.2em !important;
 }
 .PriceCarts > .Price {
   font-weight: bolder;
+}
+.PriceCarts h2 {
+  margin: 0;
+}
+.SvgIcon {
+  height: 100%;
 }
 @media screen and (max-width: 1250px) {
   .ProductItemContainer {
@@ -102,7 +118,7 @@
     font-size: 1.4em;
   }
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 480px) {
   .ProductItem > img {
     /* width: 130px;
     height: 130px; */
@@ -113,5 +129,8 @@
   }
   .Price > h2 {
     font-size: 1.2em;
+  }
+  .Carts {
+    width: 60%;
   }
 }

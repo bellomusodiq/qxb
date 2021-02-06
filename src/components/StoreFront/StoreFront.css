@@ -52,20 +52,21 @@
   margin: auto;
   margin-bottom: 150px;
 }
-@media screen and (max-width: 1250px) {
+@media screen and (max-width: 1440px) {
   .StoreFrontBanner {
-    height: 470px !important;
+    height: 550px !important;
     width: 100% !important;
   }
   .StoreFrontBanner > h1 {
-    font-size: 70px;
-    left: 9%;
-    top: 20%;
+    font-size: 127px;
+    left: 5%;
+    top: 10%;
     line-height: 1.2;
   }
   .StoreFrontBannerBtn {
-    left: 9%;
-    top: 60% !important;
+    left: 5%;
+    top: 65% !important;
+    background-position: 0 20%;
   }
   .TopCategories > * {
     margin: 10px !important;

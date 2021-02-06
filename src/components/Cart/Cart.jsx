@@ -43,7 +43,7 @@ const Cart = () => {
       title: "Delete",
       render: () => (
         <div className="DeleteBtn">
-          <i className="far fa-times"></i>
+          <i className="fas fa-times">X</i>
         </div>
       ),
     },

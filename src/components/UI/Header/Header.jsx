@@ -4,6 +4,7 @@ import "./Header.css";
 import Logo from "../../../assets/images/logo.png";
 import { CircleButton } from "../Buttons/Buttons";
 import Cart from "../../../assets/images/cart.svg";
+import LogoText from "../../../assets/images/logo-text.png";
 
 const Header = () => {
   return (
@@ -11,7 +12,7 @@ const Header = () => {
       <div className="HeaderTop">
         <div className="Location">San Fransico</div>
         <div className="HeaderText">
-          <h1>QXB</h1>
+          <img height="100%" src={LogoText} alt="logo" />
         </div>
       </div>
       <div className="HeaderBottom">
@@ -26,17 +27,17 @@ const Header = () => {
           <Link to="/">ACCESSORIES</Link>
           <Link to="/">
             <CircleButton>
-              <i className="fas fa-search fa-2x"></i>
+              <i className="fas fa-search"></i>
             </CircleButton>
           </Link>
           <Link to="/">
             <CircleButton>
-              <i className="far fa-user fa-2x"></i>
+              <i className="far fa-user"></i>
             </CircleButton>
           </Link>
           <Link to="/">
             <CircleButton>
-              <i className="far fa-heart fa-2x"></i>
+              <i className="far fa-heart"></i>
             </CircleButton>
           </Link>
           <Link to="/">
