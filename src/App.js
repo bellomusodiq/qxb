@@ -14,6 +14,7 @@ import Signup from "./components/Signup/Signup";
 import Login from "./components/Login/Login";
 import Accounts from "./components/Accounts/Accounts";
 import Cart from "./components/Cart/Cart";
+import Checkout from "./components/Checkout/Checkout";
 
 function App() {
   const [show, setShowSideNav] = useState(false);
@@ -29,6 +30,7 @@ function App() {
           <Route path="/cart" component={Cart} />
           <Route path="/category" component={CategorySection} />
           <Route path="/accounts" component={Accounts} />
+          <Route path="/checkout" component={Checkout} />
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
           <Route path="/" component={StoreFront} exact />

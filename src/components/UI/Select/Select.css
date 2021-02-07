@@ -3,8 +3,17 @@
   font-family: "TT Norms" !important;
 }
 .Select > .ant-select-selector {
-  height: 60px !important;
+  height: 55px !important;
   font-family: "TT Norms" !important;
   display: flex;
   align-items: center;
+}
+.green-text {
+  color: darkgreen;
+}
+.order-storage {
+  color: #999;
+}
+.Overview {
+  margin: 30px 0;
 }

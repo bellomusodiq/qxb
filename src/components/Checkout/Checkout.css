@@ -1,0 +1,9 @@
+.ContinueCheckout > * {
+  width: 100%;
+}
+.CheckoutNav {
+  justify-content: flex-start;
+}
+.CheckoutNav > * {
+  margin-right: 20px;
+}

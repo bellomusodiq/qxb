@@ -3,6 +3,8 @@
   border-radius: 10px;
   padding: 10px 35px;
   margin-bottom: 30px;
+  align-self: flex-start !important;
+  height: fit-content !important;
 }
 .SummaryItem {
   display: flex;
