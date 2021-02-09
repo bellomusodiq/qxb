@@ -4,17 +4,17 @@ import Summary from "../../UI/Summary/Summary";
 import "./Payment.css";
 
 const PaymentItem = ({ title, description, selected, onClick }) => (
-  <div onClick={onClick} class="PaymentItem">
-    <div class="PaymentItemText">
-      <p class="PaymentItemHeader">{title}</p>
-      <p class="PaymentItemText">{description}</p>
+  <div onClick={onClick} className="PaymentItem">
+    <div className="PaymentItemText">
+      <p className="PaymentItemHeader">{title}</p>
+      <p className="PaymentItemText">{description}</p>
     </div>
-    <div class="PaymentItemIcon">
+    <div className="PaymentItemIcon">
       <div
-        class={selected ? "outer-circle outer-circle-active" : "outer-circle"}
+        className={selected ? "outer-circle outer-circle-active" : "outer-circle"}
       >
         <div
-          class={selected ? "inner-circle inner-circle-active" : "inner-circle"}
+          className={selected ? "inner-circle inner-circle-active" : "inner-circle"}
         ></div>
       </div>
     </div>
@@ -31,7 +31,7 @@ const Payment = () => {
       justify="space-between"
     >
       <Col xs={24} md={17}>
-        <div class="PaymentItems">
+        <div className="PaymentItems">
           <PaymentItem
             title="Cashless Payment"
             description="payment by card online"

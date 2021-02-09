@@ -27,7 +27,7 @@ const Summary = ({hideButton}) => (
         <DefaultButton background="black">CHECKOUT</DefaultButton>
       </div>
     )}
-    <p class="SummaryNote">
+    <p className="SummaryNote">
       Available delivery methods can be seleсted at checkout
     </p>
   </div>

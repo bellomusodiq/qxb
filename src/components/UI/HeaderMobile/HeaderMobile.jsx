@@ -15,7 +15,7 @@ const HeaderMobile = ({ openSideNav }) => {
           <div className="Logo">
             <img src={Logo} alt="logo" />
           </div>
-          <h1>QXB</h1>
+          <h1>QxB</h1>
         </div>
         <div className="HeaderMobileNav">
           <img
@@ -25,17 +25,17 @@ const HeaderMobile = ({ openSideNav }) => {
             className="MenuBtn"
           />
           <nav>
-            <Link to="/">
+            <Link to="/category">
               <CircleButton>
                 <i className="fas fa-search fa-1x"></i>
               </CircleButton>
             </Link>
-            <Link to="/">
+            <Link to="/accounts">
               <CircleButton>
                 <i className="far fa-user fa-1x"></i>
               </CircleButton>
             </Link>
-            <Link to="/">
+            <Link to="/cart">
               <CircleButton background="black">
                 <div className="Badged">
                   <img className="SvgIcon" src={Cart} alt="cart" />

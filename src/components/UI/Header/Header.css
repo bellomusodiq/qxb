@@ -46,10 +46,11 @@ a:after,
 a:visited {
   color: inherit;
 }
-nav > a {
+nav > a, nav > div {
   color: #a3a3a3 !important;
+  cursor: pointer;
 }
-nav > a:hover {
+nav > a:hover, nav > div:hover {
   color: #171717 !important;
 }
 .Logo {
@@ -82,6 +83,10 @@ nav > a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.BadgeCounterFav {
+  background-color: #ccc;
+  color: #fff;
 }
 @media screen and (max-width: 1240px) {
   nav {

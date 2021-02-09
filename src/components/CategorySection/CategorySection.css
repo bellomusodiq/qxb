@@ -59,6 +59,11 @@
 .DiscoverButton {
   display: none;
 }
+.SearchInput {
+  width: 40%;
+  margin: auto;
+  margin-bottom: 20px;
+}
 @media screen and (max-width: 500px) {
   .CategoryBanner {
     height: 200px;

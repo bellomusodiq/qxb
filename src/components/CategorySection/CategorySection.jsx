@@ -1,11 +1,13 @@
 import React from "react";
-import { Col, Row } from "antd";
+import { Col, Input, Row } from "antd";
 import "./CategorySection.css";
 import Filter from "./Filter/Filter";
 import ProductItem from "../UI/ProductItems/ProductItem/ProductItem";
 import Recommendation from "../UI/Recommendation/Recommendation";
 import { DefaultButton } from "../UI/Buttons/Buttons";
 import BackgroundImg from "../../assets/images/category-banner.png";
+
+const {Search} = Input;
 
 const CategorySection = () => {
   return (
@@ -19,6 +21,9 @@ const CategorySection = () => {
           </div>
         </div>
         <img src={BackgroundImg} alt="category banner" />
+      </div>
+      <div className="SearchInput">
+        <Search placeholder="Search" allowClear onSearch={(e) => console.log(e)} />
       </div>
       <Row gutter={{ md: 0, lg: 10, xl: 0 }} justify="space-between">
         <Col xs={0} lg={4}>

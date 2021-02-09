@@ -52,11 +52,11 @@ const Shipping = () => {
                   </Form.Item>
                 </Col>
               </Row>
-              <div class="Overview">
+              <div className="Overview">
                 <p style={{fontWeight: "bold"}}>Delivery details:</p>
-                <p class="green-text">pickup point - Name</p>
+                <p className="green-text">pickup point - Name</p>
                 <p>Lorem ipsum dolor sit amet consectetur adipisi</p>
-                <p class="order-storage">Order storage period - 5 days</p>
+                <p className="order-storage">Order storage period - 5 days</p>
               </div>
               <div className="ContinueCheckout">
                 <DefaultButton background="black">

@@ -1,12 +1,20 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import "./Header.css";
 import Logo from "../../../assets/images/logo.png";
 import { CircleButton } from "../Buttons/Buttons";
 import Cart from "../../../assets/images/cart.svg";
 import LogoText from "../../../assets/images/logo-text.png";
+import HeaderDropdown from "../HeaderDropdown";
 
 const Header = () => {
+  const [isActive, setIsActive] = useState("/");
+  const location = useLocation();
+
+  useEffect(() => {
+    console.log(location.pathname);
+    setIsActive(window.location.pathname);
+  }, [location.pathname]);
   return (
     <header className="Header">
       <div className="HeaderTop">
@@ -20,27 +28,40 @@ const Header = () => {
           <img src={Logo} alt="logo" />
         </div>
         <nav>
-          <Link to="/">HOME</Link>
-          <Link to="/">BACKPACKS</Link>
-          <Link to="/">DUFFLES</Link>
-          <Link to="/">HATS</Link>
-          <Link to="/">ACCESSORIES</Link>
-          <Link to="/">
+          <NavLink activeClassName="Active" exact to="/">
+            HOME
+          </NavLink>
+          <NavLink activeClassName="Active" exact to="/catalogue/bagpacks">
+            BACKPACKS
+          </NavLink>
+          <NavLink activeClassName="Active" exact to="/catalogue/duffles">
+            DUFFLES
+          </NavLink>
+          <NavLink activeClassName="Active" exact to="/catalogue/hats">
+            HATS
+          </NavLink>
+          <HeaderDropdown>
+            <div>ACCESSORIES</div>
+          </HeaderDropdown>
+          <Link to="/category">
             <CircleButton>
               <i className="fas fa-search"></i>
             </CircleButton>
           </Link>
-          <Link to="/">
+          <Link to="/accounts">
             <CircleButton>
               <i className="far fa-user"></i>
             </CircleButton>
           </Link>
-          <Link to="/">
+          <Link to="/accounts/favourites">
             <CircleButton>
-              <i className="far fa-heart"></i>
+              <div className="Badged">
+                <i className="far fa-heart"></i>
+                <div className="BadgedCounter BadgeCounterFav">2</div>
+              </div>
             </CircleButton>
           </Link>
-          <Link to="/">
+          <Link to="/cart">
             <CircleButton background="black">
               <div className="Badged">
                 <img className="SvgIcon" src={Cart} alt="cart" />
