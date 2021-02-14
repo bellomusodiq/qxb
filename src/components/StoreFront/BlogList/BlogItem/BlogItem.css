@@ -1,12 +1,25 @@
 .BlogItemContainer {
   width: 31%;
+  align-self: stretch;
+}
+.BlogItemContainer > * {
+  height: 100%;
+}
+.BlogItem {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 .BlogItem > img {
   width: 100%;
   border-radius: 10px;
+  height: 220px;
 }
 .BlogContent {
+  height: 100%;
   padding: 25px;
+  display: flex;
+  flex-direction: column;
 }
 .BlogContent > h4 {
   font-family: "TT Norms";
@@ -17,10 +30,12 @@
 }
 .BlogContent > p {
   color: #999999;
+  flex: 1;
 }
 .BlogDescription {
   font-size: 1.2em;
   line-height: 1.2;
+  flex: 1;
 }
 @media screen and (max-width: 1000px) {
   .BlogContent > h4 {
@@ -32,10 +47,13 @@
   .BlogDate {
     font-size: 0.8em;
   }
+  .BlogItem > img {
+    height: 180px;
+  }
 }
 @media screen and (max-width: 500px) {
   .BlogItemContainer {
-    width: 45vw !important;
+    width: 65vw !important;
     flex: 0 0 auto;
     margin: 0 20px;
   }

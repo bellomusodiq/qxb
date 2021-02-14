@@ -4,21 +4,27 @@ import "./Collections.css";
 import { Typography } from "antd";
 import ItemInfo from "../UI/ItemInfo/ItemInfo";
 
-const { Title, Text } = Typography;
+const { Title } = Typography;
 
-const Collections = () => {
+const Collections = ({ data }) => {
   return (
     <div className="Collections">
-      <Card>
+      <Card >
         <div className="CollectionsCard">
           <Title className="CollectionsCardHeader" level={2}>
             QXB Collections
           </Title>
-          <ItemInfo />
-          <ItemInfo />
-          <ItemInfo />
-          <ItemInfo />
-          <ItemInfo />
+          {data
+            ? data.map((item) => (
+                <ItemInfo
+                  title={item.title}
+                  image={item.image}
+                  stockCount={item.total_stock}
+                  key={item.id}
+                  id={item.title}
+                />
+              ))
+            : null}
         </div>
       </Card>
     </div>

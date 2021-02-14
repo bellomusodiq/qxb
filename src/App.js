@@ -26,6 +26,7 @@ function App() {
         <HeaderMobile openSideNav={() => setShowSideNav(true)} />
         <Switch>
           <Route path="/product/:id" component={ProductDetail} />
+          <Route path="/catalogue/:id" component={Catalogue} />
           <Route path="/catalogue" component={Catalogue} />
           <Route path="/cart" component={Cart} />
           <Route path="/category" component={CategorySection} />

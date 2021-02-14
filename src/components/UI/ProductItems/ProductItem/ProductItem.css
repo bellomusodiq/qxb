@@ -1,6 +1,27 @@
+.ProductItem {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  height: 100%;
+}
 .ProductItemContainer {
   width: 23%;
-  margin-bottom: 25px;
+  /* margin-bottom: 25px; */
+  margin: 12px;
+  align-self: stretch;
+  /* flex: 1 !important; */
+}
+.ProductItemContent {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.ProductItemContainer > * {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
 }
 .ProductItem > img {
   width: 100%;
@@ -11,6 +32,7 @@
 }
 .ProductTitle {
   width: 75%;
+  flex: 1;
 }
 .ProductTitle > h2 {
   font-family: "Playfair Display";
@@ -74,7 +96,7 @@
 }
 @media screen and (max-width: 1250px) {
   .ProductItemContainer {
-    width: 24%;
+    width: 23%;
   }
   .ProductItem > img {
     /* width: 190px;
@@ -108,6 +130,9 @@
   }
   .Price > h2 {
     font-size: 1.4em;
+  }
+  .ProductItemContainer {
+    margin: 12px 5px;
   }
 }
 @media screen and (max-width: 480px) {

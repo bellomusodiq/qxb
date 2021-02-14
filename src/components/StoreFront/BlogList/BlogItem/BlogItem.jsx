@@ -1,19 +1,18 @@
 import React from "react";
 import Card from "../../../UI/Card/Card";
 import "./BlogItem.css";
-import Image from "../../../../assets/images/blog.png";
 
-const BlogItem = () => (
+const BlogItem = ({ title, body, date, image }) => (
   <div className="BlogItemContainer">
     <Card>
       <div className="BlogItem">
-        <img src={Image} alt="blog img" />
+        <img src={image} alt="blog img" />
         <div className="BlogContent">
-          <h4>Title name news or articles, planned on this site</h4>
+          <h4>{title}</h4>
           <p className="BlogDescription">
-            A small description of the article and news on this site
+            {body.slice(0, 100)}
           </p>
-          <p className="BlogDate">12.11.2020</p>
+          <p className="BlogDate">{date}</p>
         </div>
       </div>
     </Card>

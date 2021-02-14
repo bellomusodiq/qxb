@@ -1,16 +1,27 @@
 import React from "react";
 import "./ItemInfo.css";
 import { Col, Row, Typography } from "antd";
-import Image from "../../../assets/images/top_product.png";
+import { useHistory } from "react-router-dom";
 
 const { Text } = Typography;
 
-const ItemInfo = () => {
+const ItemInfo = ({ title, image, stockCount, id, isCollection=true }) => {
+  const history = useHistory();
+  const navigate = () => {
+    if (isCollection) {
+      history.push(`/category/?collection=${id}`)
+    } else {
+      history.push(`/catalogue/${id}`)
+    }
+  }
   return (
-    <div className="ItemInfo">
+    <div
+      onClick={navigate}
+      className="ItemInfo"
+    >
       <Row gutter={5}>
         <Col xs={4} style={{ marginRight: 20 }}>
-          <img src={Image} alt="product img" />
+          <img src={image} alt="product img" />
         </Col>
         <Col xs={16}>
           <Row>
@@ -18,7 +29,7 @@ const ItemInfo = () => {
               className="ItemInfoHeading"
               style={{ fontFamily: "Playfair Display" }}
             >
-              Black Hoodies
+              {title}
             </Text>
           </Row>
           <Row>
@@ -30,7 +41,7 @@ const ItemInfo = () => {
                 fontFamily: "Playfair Display",
               }}
             >
-              In stock: 32
+              In stock: {stockCount}
             </Text>
           </Row>
         </Col>

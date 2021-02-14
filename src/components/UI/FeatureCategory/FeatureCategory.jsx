@@ -3,20 +3,22 @@ import Tab from "../Tab/Tab";
 import "./FeatureCategory.css";
 import ProductItems from "../ProductItems/ProductItems";
 
-const tabContent = [
-  {
-    title: "BEST SELLERS",
-    key: "best_sellers",
-    children: <ProductItems />,
-  },
-  {
-    title: "NEW ARRIVALS",
-    key: "new_arrivals",
-    children: <ProductItems />,
-  },
-];
 
-const FeatureCategory = () => {
+const FeatureCategory = ({bestSeller, newArrivals}) => {
+
+  const tabContent = [
+    {
+      title: "BEST SELLERS",
+      key: "best_sellers",
+      children: <ProductItems data={bestSeller} />,
+    },
+    {
+      title: "NEW ARRIVALS",
+      key: "new_arrivals",
+      children: <ProductItems data={newArrivals} />,
+    },
+  ];
+
   return (
     <div className="FeatureCategory">
       <h3>Featured Category</h3>

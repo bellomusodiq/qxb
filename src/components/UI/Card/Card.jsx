@@ -1,8 +1,12 @@
 import React from "react";
 import "./Card.css";
 
-const Card = ({ children }) => (
-  <div style={{ borderRadius: "5px" }} className="Card">
+const Card = ({ children, onClick = null }) => (
+  <div
+    onClick={onClick}
+    style={{ borderRadius: "5px", cursor: onClick ? "pointer" : "default" }}
+    className="Card"
+  >
     {children}
   </div>
 );
