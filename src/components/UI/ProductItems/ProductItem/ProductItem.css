@@ -29,6 +29,9 @@
   object-fit: cover;
   border-radius: 3%;
   border: 0.5px solid #cccccc !important;
+  height: 250px;
+  object-fit: cover;
+  object-position: center;
 }
 .ProductTitle {
   width: 75%;
@@ -136,9 +139,11 @@
   }
 }
 @media screen and (max-width: 480px) {
+  /* .ProductItem {
+    align-self: flex-start;
+  } */
   .ProductItem > img {
-    /* width: 130px;
-    height: 130px; */
+    height: 130px;
     width: 100%;
   }
   .ProductTitle > h2 {

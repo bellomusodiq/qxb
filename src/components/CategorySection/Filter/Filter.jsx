@@ -3,30 +3,23 @@ import Card from "../../UI/Card/Card";
 import MarkerSelect from "../../UI/MarkerSelect/MarkerSelect";
 import "./Filter.css";
 import { Col, Row, Slider } from "antd";
+import { DefaultButton } from "../../UI/Buttons/Buttons";
 
-const categoriesItem = [
-  { title: "All", selected: false },
-  { title: "Men", selected: false },
-  { title: "Women", selected: false },
-  { title: "Back Pack", selected: false },
-  { title: "Hoodies", selected: false },
-  { title: "All", selected: false },
-];
-
-const colors = [
-  "#000000",
-  "#146FF8",
-  "#84519C",
-  "#C716AA",
-  "#FFFFFF",
-  "#267113",
-  "#2B2A74",
-  "#8893BD",
-];
-
-const Filter = () => {
-  const [categories, setCategories] = useState(categoriesItem || []);
-  const [sliderRange, setSliderRange] = useState([10, 100]);
+const Filter = ({
+  categories,
+  sizes,
+  colors,
+  query,
+  filterSize,
+  filterColor,
+  filterRange,
+  filterCategory,
+  resetFilter
+}) => {
+  const [sliderRange, setSliderRange] = useState([
+    query.has("lower") ? query.get("lower") : 0,
+    query.has("upper") ? query.get("upper") : 100,
+  ]);
   return (
     <div className="Filter">
       <Card>
@@ -34,26 +27,31 @@ const Filter = () => {
           <h2>Filters</h2>
           <Row style={{ marginTop: 20 }}>
             <h3>Categories</h3>
-            {categories.map((category, i) => (
+            {categories.map((category) => (
               <MarkerSelect
-                key={i}
+                key={category.id}
                 title={category.title}
-                selected={category.selected}
-                // onSelect={() =>
-                //   setCategories((current) => {
-                //     current[i].selected = !current[i].selected;
-                //   })
-                // }
-                onSelect={() => {}}
+                onSelect={() => filterCategory(category.title)}
+                selected={
+                  query.has("category")
+                    ? query.get("category") === category.title
+                    : false
+                }
               />
             ))}
           </Row>
           <Row style={{ marginTop: 20 }}>
             <h3>Size</h3>
-            <MarkerSelect title="Small" />
-            <MarkerSelect title="Medium" />
-            <MarkerSelect title="Large" />
-            <MarkerSelect title="Extra Large" />
+            {sizes.map((size) => (
+              <MarkerSelect
+                key={size.id}
+                title={size.size}
+                onSelect={() => filterSize(size.size)}
+                selected={
+                  query.has("size") ? query.get("size") === size.size : false
+                }
+              />
+            ))}
           </Row>
           <Row style={{ marginTop: 20 }}>
             <h3>Price</h3>
@@ -64,8 +62,13 @@ const Filter = () => {
             </Col>
             <Col xs={24}>
               <Slider
-                onChange={(value) => setSliderRange(value)}
+                onChange={(value) => {
+                  setSliderRange(value);
+                }}
                 range
+                onAfterChange={value => {
+                  filterRange(value[0], value[1])
+                }}
                 min={1}
                 max={1000}
                 value={sliderRange}
@@ -75,15 +78,28 @@ const Filter = () => {
           <Row style={{ marginTop: 20 }}>
             <h3>Color</h3>
             <div className="ColorFilters">
-              {colors.map((color, i) => (
+              {colors.map((color) => {
+                return (
                 <div
-                  style={{ background: color }}
-                  key={i}
+                  style={{ background: color.color }}
+                  key={color.id}
                   className="ColorFilter"
-                ></div>
-              ))}
+                  onClick={() => filterColor(color.color)}
+                >
+                  {query.has("color") ? (
+                    query.get("color") === color.color ? (
+                      <i className="fas fa-check"></i>
+                    ) : null
+                  ) : null}
+                </div>
+              )})}
             </div>
           </Row>
+          <div className="ResetButton">
+            <DefaultButton background="black" onClick={resetFilter} >
+              Reset
+            </DefaultButton>
+          </div>
         </div>
       </Card>
     </div>

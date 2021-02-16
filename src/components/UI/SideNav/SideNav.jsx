@@ -25,10 +25,10 @@ const SideNav = ({ show, close }) => {
           </Link>
           <Link
             onClick={close}
-            className={location.pathname === "/catalogue/men" ? "Active" : ""}
-            to="/catalogue/men"
+            className={location.pathname === "/catalogue/backpacks" ? "Active" : ""}
+            to="/catalogue/backpacks"
           >
-            MENS
+            BACKPACKS
           </Link>
           <Link
             onClick={close}

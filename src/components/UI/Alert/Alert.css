@@ -1,0 +1,26 @@
+.Alert {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.75);
+  padding: 10px;
+  z-index: 20;
+  top: 100px;
+  right: 100px;
+  transition: 0.4s ease all;
+  max-width: calc(100vw - 200px);
+}
+.Alert > p {
+  margin: 0;
+}
+@media screen and (max-width: 800px) {
+  .Alert {
+    right: 40px;
+    max-width: calc(100vw - 80px);
+  }
+}
+@media screen and (max-width: 480px) {
+  .Alert {
+    right: 20px;
+    width: calc(100vw - 40px);
+    max-width: calc(100vw - 40px);
+  }
+}

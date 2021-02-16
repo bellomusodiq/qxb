@@ -1,5 +1,6 @@
 import React from "react";
 import "./Buttons.css";
+import { LoadingOutlined } from "@ant-design/icons";
 
 const getBackgroundColor = (background) => {
   let bck = "white";
@@ -34,14 +35,23 @@ export const DefaultButton = ({
   children,
   background,
   classNames,
+  loading,
 }) => {
   const { bck, col } = getBackgroundColor(background);
   return (
     <button
       onClick={onClick}
-      style={{ background: bck, color: col }}
+      style={{
+        background: bck,
+        color: col,
+        opacity: loading ? 0.4 : 1,
+        cursor: loading ? "progress" : "pointer",
+      }}
       className={`Button DefaultButton ${classNames}`}
     >
+      {loading ? (
+        <LoadingOutlined style={{ marginRight: 5 }} color={col} />
+      ) : null}
       {children}
     </button>
   );

@@ -14,6 +14,8 @@
   width: 100%;
   border-radius: 10px;
   height: 220px;
+  object-position: center;
+  object-fit: cover;
 }
 .BlogContent {
   height: 100%;

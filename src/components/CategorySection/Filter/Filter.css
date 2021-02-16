@@ -4,3 +4,9 @@
 .FilterContent {
   padding: 20px 0px !important;
 }
+.ResetButton {
+  margin-top: 20px;
+}
+.ResetButton > * {
+  width: 100%;
+}

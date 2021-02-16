@@ -1,6 +1,12 @@
 .CategorySection {
   padding: 0 5%;
 }
+.CategoryProducts > * {
+  margin: 10px;
+}
+.CategoryProducts .ProductItem > img {
+  height: 230px;
+}
 .FilterContent > h2,
 .FilterContent h3 {
   font-family: "Playfair Display";
@@ -38,6 +44,10 @@
   width: 25px;
   height: 25px;
   margin: 10px 7px;
+  border: 0.5px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .CategoryBanner {
   height: 300px;

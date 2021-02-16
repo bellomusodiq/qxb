@@ -43,25 +43,6 @@ const StoreFront = () => {
     });
   };
 
-  // const fetchProducts = (newUrl = null) => {
-  //   let url = `${BASE_URL}/api/products/`;
-  //   if (newUrl) {
-  //     url = newUrl;
-  //   }
-  //   setLoading(true);
-  //   setError(false);
-  //   axios.get(url).then((result) => {
-  //     setNextPage(result.data.next);
-  //     setLoading(false);
-  //     setError(false);
-  //     if (newUrl) {
-  //       setProducts((oldProducts) => [...oldProducts, result.data.results]);
-  //     } else {
-  //       setProducts(result.data.results);
-  //     }
-  //   });
-  // };
-
   const fetchBestSellers = (newUrl = null) => {
     let url = `${BASE_URL}/api/products/?best_sellers=true`;
     if (newUrl) {
