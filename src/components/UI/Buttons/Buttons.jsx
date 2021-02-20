@@ -36,11 +36,12 @@ export const DefaultButton = ({
   background,
   classNames,
   loading,
+  type = "button",
 }) => {
   const { bck, col } = getBackgroundColor(background);
   return (
     <button
-      onClick={onClick}
+      onClick={loading ? null : onClick}
       style={{
         background: bck,
         color: col,
@@ -48,6 +49,7 @@ export const DefaultButton = ({
         cursor: loading ? "progress" : "pointer",
       }}
       className={`Button DefaultButton ${classNames}`}
+      type={type}
     >
       {loading ? (
         <LoadingOutlined style={{ marginRight: 5 }} color={col} />

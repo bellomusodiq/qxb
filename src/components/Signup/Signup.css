@@ -24,6 +24,9 @@
   margin: 0 10px;
   color: #a3a3a3;
 }
+.PasswordMatch {
+  color: tomato;
+}
 @media screen and (max-width: 500px) {
   .Signup {
     padding: 15px 10%;

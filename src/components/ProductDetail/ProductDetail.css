@@ -19,6 +19,9 @@
   height: 150px;
   margin: 10px 15px;
   border-radius: 5px;
+  object-fit: cover;
+  object-position: center;
+  cursor: pointer;
 }
 .ColorSelect > p {
   font-weight: bold;
@@ -37,6 +40,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 0.5px solid black;
 }
 .ColorItem > i {
   color: white;
