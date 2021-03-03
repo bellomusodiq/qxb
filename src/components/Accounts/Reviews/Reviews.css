@@ -2,11 +2,18 @@
   margin-bottom: 50px;
   display: flex;
   justify-content: flex-start;
+  flex-wrap: wrap;
 }
 .MyReviews > * {
   width: 30%;
   margin: 0 calc(3% / 8);
   margin-bottom: 20px;
+  
+}
+.MyReviewsButton {
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
 }
 @media screen and (max-width: 500px) {
   .MyReviews {

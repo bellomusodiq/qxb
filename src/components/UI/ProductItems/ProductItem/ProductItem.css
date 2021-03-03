@@ -57,7 +57,6 @@
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  width: 40%;
 }
 .Carts .Badged {
   width: 60%;
@@ -68,6 +67,12 @@
 }
 .Favourite {
   background-color: #eeeeee !important;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.RemoveFavourite {
   padding: 0;
   display: flex;
   justify-content: center;

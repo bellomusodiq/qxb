@@ -45,6 +45,14 @@
 .PaymentItemHeader {
   font-weight: bold;
 }
+.PaymentPageButton { 
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+.PaymentPageButton > button {
+  width: fit-content;
+}
 @media screen and (max-width: 480px) {
   .PaymentItem {
     width: 100%;

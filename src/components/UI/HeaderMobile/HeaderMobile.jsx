@@ -5,8 +5,11 @@ import { Link } from "react-router-dom";
 import Cart from "../../../assets/images/cart.svg";
 import { CircleButton } from "../Buttons/Buttons";
 import Menu from "../../../assets/images/menu.svg";
+import { useSelector } from "react-redux";
 
 const HeaderMobile = ({ openSideNav }) => {
+  const cartCount = useSelector(state => state.carts.count);
+
   return (
     <div className="HeaderMobile">
       <div className="HeaderMobileTop">San Fransisco</div>
@@ -39,7 +42,7 @@ const HeaderMobile = ({ openSideNav }) => {
               <CircleButton background="black">
                 <div className="Badged">
                   <img className="SvgIcon" src={Cart} alt="cart" />
-                  <div className="BadgedCounter">2</div>
+                  <div className="BadgedCounter">{cartCount}</div>
                 </div>
               </CircleButton>
             </Link>

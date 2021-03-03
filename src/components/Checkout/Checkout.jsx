@@ -6,14 +6,16 @@ import Contact from "./Contact/Contact";
 import "./Checkout.css";
 import Shipping from "./Shipping/Shipping";
 import Payment from "./Payment/Payment";
+import { useSelector } from "react-redux";
 
-export const DataInput = ({ placeholder, label, required, name }) => (
+export const DataInput = ({ placeholder, label, required, name, initialValue }) => (
   <Row align="start" gutter={30}>
     <Col xs={24} md={18}>
       <Form.Item
         rules={[{ required: required }]}
         name={name}
         placeholder={placeholder}
+        initialValue={initialValue}
       >
         <Input
           name={name}
@@ -27,20 +29,29 @@ export const DataInput = ({ placeholder, label, required, name }) => (
 );
 
 const Checkout = () => {
+  const name = useSelector((state) => state.account.name);
   return (
     <div className="Accounts">
       <div className="AccountsHeader">
         <h2>Checkout</h2>
-        <p>Mayowa Gordon</p>
+        <p>{name}</p>
       </div>
       <div className="AccountsNav CheckoutNav">
         <NavLink exact activeClassName="AccountsNavActive" to="/checkout">
           <DefaultButton>Contact</DefaultButton>
         </NavLink>
-        <NavLink exact activeClassName="AccountsNavActive" to="/checkout/shipping">
+        <NavLink
+          exact
+          activeClassName="AccountsNavActive"
+          to="/checkout/shipping"
+        >
           <DefaultButton>Shipping</DefaultButton>
         </NavLink>
-        <NavLink exact activeClassName="AccountsNavActive" to="/checkout/payment">
+        <NavLink
+          exact
+          activeClassName="AccountsNavActive"
+          to="/checkout/payment"
+        >
           <DefaultButton>Payment</DefaultButton>
         </NavLink>
       </div>

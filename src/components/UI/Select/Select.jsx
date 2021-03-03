@@ -4,18 +4,16 @@ import "./Select.css";
 
 const { Option } = Select;
 
-const CustomSelect = ({ options, onChange, placeholder, required }) => {
+const CustomSelect = ({ options, placeholder }) => {
   return (
     <Select
-      required={required}
       className="Select"
       placeholder={placeholder}
       style={{ width: 120 }}
-      onChange={onChange}
     >
-      {options.map((option, i) => (
-        <Option key={i} value={option.value}>
-          {option.name}
+      {options.map((option) => (
+        <Option key={option.key} value={option.value}>
+          {option.value}
         </Option>
       ))}
     </Select>

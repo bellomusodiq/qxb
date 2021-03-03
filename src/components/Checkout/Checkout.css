@@ -7,3 +7,16 @@
 .CheckoutNav > * {
   margin-right: 20px;
 }
+.AddressSelect {
+  align-self: stretch;
+  margin: 0 5px;
+}
+.AddressDetails .ant-form-item-control-input {
+  height: 50px !important;
+}
+.AddressDetails .ant-select-selector {
+  height: 50px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

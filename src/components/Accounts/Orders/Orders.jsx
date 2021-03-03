@@ -1,21 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Table } from "antd";
 import "./Orders.css";
-import img from "../../../assets/images/product1.png";
+import { useLocation } from "react-router-dom";
+import { BASE_URL } from "../../../CONFIG";
+import Pagination from "../../UI/Pagination/Pagination";
+import axios from "axios";
+import Alert from "../../UI/Alert/Alert";
 
 const Orders = () => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const [orders, setOrders] = useState();
+  const [next, setNext] = useState();
+  const [previous, setPrevious] = useState();
+
+  const location = useLocation();
+
   const columns = [
     {
       title: "",
-      dataIndex: "image",
-      render: (src) => <img width="50" height="50" alt="" src={src} />
+      dataIndex: "img",
+      render: (src) => {
+        return (
+          <img className="OrderImage" width="50" height="50" alt="" src={src} />
+        );
+      },
     },
     {
       title: "Name of product",
       dataIndex: "name",
     },
     {
-      title: "Total Amount",
+      title: "Amount",
       dataIndex: "amount",
       render: (text) => <b>{`$${text}`}</b>,
     },
@@ -28,45 +44,70 @@ const Orders = () => {
       dataIndex: "subTotal",
       render: (text) => <b>{`$${text}`}</b>,
     },
-  ].filter(item => {
+  ].filter((item) => {
     if (window.screen.width >= 500) {
       return item;
     } else {
-      return item.title !== ""
+      return item.title !== "";
     }
-  })
+  });
 
-  const data = [
-    {
-      img: img,
-      key: "0",
-      name: "QXB Vintage",
-      amount: 28.85,
-      quantity: 5,
-      subTotal: 125.6,
-    },
-    {
-      img: img,
-      key: "1",
-      name: "QXB Vintage",
-      amount: 28.85,
-      quantity: 5,
-      subTotal: 125.6,
-    },
-    {
-      img: img,
-      key: "2",
-      name: "QXB Vintage",
-      amount: 28.85,
-      quantity: 5,
-      subTotal: 125.6,
-    },
-  ];
+  const updatedData = (data = []) =>
+    data?.map((item) => ({
+      key: item.id,
+      img: BASE_URL + item.product_obj.image,
+      name: item.product_obj.title,
+      amount: item.product_obj.price,
+      quantity: item.quantity,
+      subTotal: item.sub_total,
+    }));
 
+  const fetchOrder = (newUrl = null) => {
+    const id = location.pathname.split("/")[3];
+    const token = localStorage.getItem("token");
+    let url = `${BASE_URL}/api/order-items/?order=${id}`;
+    if (newUrl) {
+      url = newUrl;
+    }
+    const headers = {
+      Authorization: `JWT ${token}`,
+    };
+    setLoading(true);
+    setError(false);
+    axios
+      .get(url, { headers: headers })
+      .then((result) => {
+        setLoading(false);
+        setNext(result.data.next);
+        setPrevious(result.data.previous);
+        setOrders(result.data.results);
+      })
+      .catch(() => {
+        setLoading(false);
+        setError(true);
+        setTimeout(() => {
+          setError(false);
+        }, 3000);
+      });
+  };
+
+  useEffect(() => {
+    fetchOrder();
+  }, []);
 
   return (
     <div className="Orders">
-      <Table columns={columns} dataSource={data} />;
+      <Alert show={error} message="something went wrong" error={true} />
+      <Table
+        loading={loading}
+        columns={columns}
+        dataSource={updatedData(orders)}
+        pagination={false}
+      />
+      <Pagination
+        onClickNext={next ? () => fetchOrder(next) : null}
+        onClickPrevious={previous ? () => fetchOrder(previous) : null}
+      />
     </div>
   );
 };

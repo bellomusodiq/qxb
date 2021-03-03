@@ -1,10 +1,26 @@
 import React, { useState } from "react";
 import "./Cart.css";
 import { Col, Row, Table } from "antd";
-import img from "../../assets/images/product1.png";
 import Summary from "../UI/Summary/Summary";
+import { useDispatch, useSelector } from "react-redux";
+import { BASE_URL } from "../../CONFIG";
+import Alert from "../UI/Alert/Alert";
+import axios from "axios";
+import { fetchCartItems } from "../../App";
+import Pagination from "../UI/Pagination/Pagination";
 
 const Cart = () => {
+  const loading = useSelector((state) => state.carts.loading);
+  const carts = useSelector((state) => state.carts.carts);
+  const next = useSelector((state) => state.carts.next);
+  const previous = useSelector((state) => state.carts.previous);
+
+  const [showAlert, setShowAlert] = useState(false);
+  const [message, setMessage] = useState("");
+  const [cartUpdateError, setCartUpdateError] = useState(false);
+
+  const dispatch = useDispatch();
+
   const columns = [
     {
       title: "Name",
@@ -23,12 +39,15 @@ const Cart = () => {
         <div className="Counter">
           <div
             className="CounterButton"
-            onClick={() => dataRow.setQuantity(-1)}
+            onClick={() => dataRow.setQuantity(-1, dataRow.quantity)}
           >
             {" < "}
           </div>
           <div>{quantity}</div>
-          <div className="CounterButton" onClick={() => dataRow.setQuantity(1)}>
+          <div
+            className="CounterButton"
+            onClick={() => dataRow.setQuantity(1, dataRow.quantity)}
+          >
             {" > "}
           </div>
         </div>
@@ -41,46 +60,90 @@ const Cart = () => {
     },
     {
       title: "Delete",
-      render: () => (
-        <div className="DeleteBtn">
+      render: (_, dataRow) => (
+        <div onClick={dataRow.onDelete} className="DeleteBtn">
           <i className="fas fa-times"></i>
         </div>
       ),
     },
   ];
 
-  const [data, setData] = useState([
-    {
-      img: img,
-      key: "0",
-      name: "QXB Vintage",
-      amount: 28.85,
-      quantity: 5,
-      setQuantity: (value) => {},
+  const updateCartItem = (id, quantity) => {
+    const url = `${BASE_URL}/api/cart-items/${id}/`;
+    const data = {
+      quantity,
+    };
+    axios
+      .patch(url, data)
+      .then(() => {
+        setMessage("item updated successfully");
+        setCartUpdateError(false);
+        fetchCartItems(dispatch);
+      })
+      .catch(() => {
+        setMessage("something went wrong, try again");
+        setCartUpdateError(true);
+      })
+      .finally(() => {
+        setShowAlert(true);
+        setTimeout(() => {
+          setShowAlert(false);
+        }, 3000);
+      });
+  };
+
+  const deleteCartItem = (id) => {
+    const url = `${BASE_URL}/api/cart-items/${id}/`;
+    axios
+      .delete(url)
+      .then(() => {
+        setMessage("item deleted successfully");
+        setCartUpdateError(false);
+        fetchCartItems(dispatch);
+      })
+      .catch(() => {
+        setMessage("something went wrong, try again");
+        setCartUpdateError(true);
+      })
+      .finally(() => {
+        setShowAlert(true);
+        setTimeout(() => {
+          setShowAlert(false);
+        }, 3000);
+      });
+  };
+
+  const data = carts?.map((item) => ({
+    key: item.id,
+    img: BASE_URL + item.product_obj.image,
+    name: item.product_obj.title,
+    quantity: item.quantity,
+    amount: item.sub_total,
+    setQuantity: (value) => {
+      updateCartItem(item.id, item.quantity + value);
     },
-    {
-      img: img,
-      key: "1",
-      name: "QXB Vintage",
-      amount: 28.85,
-      quantity: 5,
-      setQuantity: (value) => {},
+    onDelete: () => {
+      deleteCartItem(item.id);
     },
-    {
-      img: img,
-      key: "2",
-      name: "QXB Vintage",
-      amount: 28.85,
-      quantity: 5,
-      setQuantity: (value) => {},
-    },
-  ]);
+  }));
 
   return (
     <div className="Cart">
+      <Alert show={showAlert} message={message} error={cartUpdateError} />
       <Row gutter={50}>
         <Col md={17}>
-          <Table columns={columns} dataSource={data} />
+          <Table
+            columns={columns}
+            loading={loading}
+            dataSource={data}
+            pagination={false}
+          />
+          <Pagination
+            onClickPrevious={
+              previous ? () => fetchCartItems(dispatch, previous) : null
+            }
+            onClickNext={next ? () => fetchCartItems(dispatch, next) : null}
+          />
         </Col>
         <Col md={7}>
           <Summary />

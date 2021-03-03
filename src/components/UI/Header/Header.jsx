@@ -6,10 +6,13 @@ import { CircleButton } from "../Buttons/Buttons";
 import Cart from "../../../assets/images/cart.svg";
 import LogoText from "../../../assets/images/logo-text.png";
 import HeaderDropdown from "../HeaderDropdown";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [isActive, setIsActive] = useState("/");
   const location = useLocation();
+  const cartCount = useSelector(state => state.carts.count);
+  const favouritesCount = useSelector(state => state.favourites.count);
 
   useEffect(() => {
     console.log(location.pathname);
@@ -57,7 +60,7 @@ const Header = () => {
             <CircleButton>
               <div className="Badged">
                 <i className="far fa-heart"></i>
-                <div className="BadgedCounter BadgeCounterFav">2</div>
+                <div className="BadgedCounter BadgeCounterFav">{favouritesCount}</div>
               </div>
             </CircleButton>
           </Link>
@@ -65,7 +68,7 @@ const Header = () => {
             <CircleButton background="black">
               <div className="Badged">
                 <img className="SvgIcon" src={Cart} alt="cart" />
-                <div className="BadgedCounter">2</div>
+                <div className="BadgedCounter">{cartCount}</div>
               </div>
             </CircleButton>
           </Link>

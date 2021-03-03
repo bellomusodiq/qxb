@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Col, Row } from "antd";
 import Summary from "../../UI/Summary/Summary";
 import "./Payment.css";
+import { DefaultButton } from "../../UI/Buttons/Buttons";
+import { useHistory } from "react-router-dom";
 
 const PaymentItem = ({ title, description, selected, onClick }) => (
   <div onClick={onClick} className="PaymentItem">
@@ -23,6 +25,7 @@ const PaymentItem = ({ title, description, selected, onClick }) => (
 
 const Payment = () => {
   const [current, setCurrent] = useState("cashless");
+  const history = useHistory();
   return (
     <Row
       gutter={50}
@@ -39,6 +42,12 @@ const Payment = () => {
             onClick={() => setCurrent("cashless")}
           />
           <PaymentItem
+            title="Cash Payment"
+            description="Uppon receipt of the goods"
+            selected={current === "cash"}
+            onClick={() => setCurrent("cash")}
+          />
+          {/* <PaymentItem
             title="PayPal"
             description="PayPal Service"
             selected={current === "paypal"}
@@ -49,20 +58,25 @@ const Payment = () => {
             description="Payment with google wallet"
             selected={current === "googlepay"}
             onClick={() => setCurrent("googlepay")}
-          />
+          /> */}
         </div>
-          <PaymentItem
+          {/* <PaymentItem
             title="Apple Pay"
             description="Payment with apple wallet"
             selected={current === "applepay"}
             onClick={() => setCurrent("applepay")}
-          />
-          <PaymentItem
+          /> */}
+          {/* <PaymentItem
             title="Cash Payment"
             description="Uppon receipt of the goods"
             selected={current === "cash"}
             onClick={() => setCurrent("cash")}
-          />
+          /> */}
+          <div className="PaymentPageButton">
+            <DefaultButton onClick={() => history.push('/payments')} background="black">
+              PROCEED TO PAYMENT
+            </DefaultButton>
+          </div>
       </Col>
       <Col className="" xs={24} md={7}>
         <Summary hideButton />

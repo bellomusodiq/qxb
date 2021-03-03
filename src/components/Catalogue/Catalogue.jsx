@@ -73,7 +73,7 @@ const Catalogue = () => {
   }
 
   const getUrl = () => {
-    let url = `${BASE_URL}/api/products`;
+    let url = `${BASE_URL}/api/products/`;
     const category = parseCategory(location.pathname);
     if (category) {
       url += `?category=${category}`;

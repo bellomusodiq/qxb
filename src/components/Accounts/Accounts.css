@@ -64,6 +64,15 @@
   margin: 0;
   margin-left: 10px;
 }
+.OrdersList .ant-table-row {
+  cursor: pointer;
+}
+.success-feedback {
+  color: green;
+}
+.error-feedback {
+  color: tomato;
+}
 @media screen and (max-width: 500px) {
   .SaveChanges > * {
     width: 100%;

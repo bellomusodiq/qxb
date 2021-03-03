@@ -43,7 +43,7 @@ const Signup = () => {
       setSuccess(true);
       axios
         .post(url, data)
-        .then((result) => {
+        .then(() => {
           setLoading(false);
           setSuccess(true);
           setShowAlert(true);

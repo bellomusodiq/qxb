@@ -37,16 +37,24 @@ export const DefaultButton = ({
   classNames,
   loading,
   type = "button",
+  disabled = false
 }) => {
   const { bck, col } = getBackgroundColor(background);
+  let cursor = "pointer";
+  if (loading) {
+    cursor = "progress";
+  }
+  if (disabled) {
+    cursor = "not-allowed"
+  }
   return (
     <button
-      onClick={loading ? null : onClick}
+      onClick={loading || disabled ? null : onClick}
       style={{
         background: bck,
         color: col,
-        opacity: loading ? 0.4 : 1,
-        cursor: loading ? "progress" : "pointer",
+        opacity: loading || disabled ? 0.4 : 1,
+        cursor: cursor,
       }}
       className={`Button DefaultButton ${classNames}`}
       type={type}

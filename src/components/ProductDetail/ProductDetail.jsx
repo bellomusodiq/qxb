@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Col, Row } from "antd";
+import { Col, Row, Form, Select } from "antd";
 import "./ProductDetail.css";
-import ProductImage from "../../assets/images/product1.png";
 import StarReviews from "../UI/StarReviews/StarReviews";
-import CustomSelect from "../UI/Select/Select";
 import { DefaultButton } from "../UI/Buttons/Buttons";
 import Cart from "../../assets/images/cart.svg";
 import { Link, useParams } from "react-router-dom";
@@ -13,6 +11,9 @@ import { BASE_URL } from "../../CONFIG";
 import axios from "axios";
 import Loader from "../UI/Loader/Loader";
 import ErrorComponent from "../UI/ErrorComponent/ErrorComponent";
+import Alert from "../UI/Alert/Alert";
+import { fetchCartItems } from "../../App";
+import { useDispatch } from "react-redux";
 
 const ProductDetail = () => {
   const [product, setProduct] = useState();
@@ -21,14 +22,63 @@ const ProductDetail = () => {
   const [reviews, setReviews] = useState();
   const [reviewsLoading, setReviewsLoading] = useState(false);
   const [reviewsError, setReviewsError] = useState(false);
-  const [colorIndex, setColorIndex] = useState(3);
-  const [quantity, setQuantity] = useState(0);
+  const [colorIndex, setColorIndex] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   const [currentImage, setCurrentImage] = useState();
+  const [currentSize, setCurrentSize] = useState();
+  const [selectErrorMessage, setSelectErrorMessage] = useState();
 
   const { id } = useParams();
 
+  const dispatch = useDispatch();
+  const [showAlert, setShowAlert] = useState(false);
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState(false);
+
+  const addToCart = () => {
+    const url = `${BASE_URL}/api/cart-items/`;
+    const data = {
+      cart: localStorage.getItem("cartId"),
+      product: id,
+      quantity: 1,
+      color: product.colors[colorIndex]?.id,
+      size: currentSize,
+    };
+    axios
+      .post(url, data)
+      .then(() => {
+        setError(false);
+        setShowAlert(true);
+        setMessage("added product to cart");
+        fetchCartItems(dispatch);
+      })
+      .catch((error) => {
+        if (error.response?.data?.non_field_errors) {
+          setMessage("already added product to cart");
+        } else {
+          setMessage("something went wrong, try again");
+        }
+        setShowAlert(true);
+        setError(true);
+      })
+      .finally(() => {
+        setTimeout(() => {
+          setShowAlert(false);
+        }, 3000);
+      });
+  };
+
+  const onAddToCart = (e) => {
+    console.log(e);
+    if (!currentSize) {
+      setSelectErrorMessage("Please select a product size");
+      return;
+    }
+    addToCart();
+  };
+
   const updateQuantity = (counter) => {
-    if (quantity === 0 && counter === -1) return;
+    if (quantity === 1 && counter === -1) return;
     setQuantity(quantity + counter);
   };
   const fetchProduct = () => {
@@ -79,6 +129,7 @@ const ProductDetail = () => {
   } else if (product && reviews) {
     content = (
       <>
+        <Alert show={showAlert} error={error} message={message} />
         <div className="ProductDetail">
           <Row gutter={20} justify="space-between">
             <Col md={18}>
@@ -93,7 +144,9 @@ const ProductDetail = () => {
                         <div className="ProductImages">
                           {product.images.map((image, i) => (
                             <img
-                              onClick={() => setCurrentImage(BASE_URL + image.image)}
+                              onClick={() =>
+                                setCurrentImage(BASE_URL + image.image)
+                              }
                               src={BASE_URL + image.image}
                               key={i}
                               alt="products"
@@ -103,70 +156,90 @@ const ProductDetail = () => {
                       </div>
                     </Col>
                     <Col md={11}>
-                      <div className="ProductPrice">
-                        <h3>$ {product.price}</h3>
-                        <p>Per price</p>
-                      </div>
-                      <h2 className="ProductDetailTitle">{product.title}</h2>
-                      <p className="Description">{product.description}</p>
-                      <StarReviews
-                        productDetail
-                        rating={product.rating}
-                        reviewsCount={product.reviews_count}
-                      />
-                      <div className="ColorSelect">
-                        <p>COLOR</p>
-                        <div className="ColorSelectItems">
-                          {product.colors.map((color, i) => (
-                            <div
-                              style={{ background: color.color }}
-                              key={i}
-                              className="ColorItem"
-                              onClick={() => setColorIndex(i)}
-                            >
-                              {colorIndex === i ? (
-                                <i className="fas fa-check"></i>
-                              ) : null}
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                      <div className="SelectSize">
-                        <CustomSelect
-                          placeholder="Select size"
-                          options={product.sizes.map((size) => ({
-                            key: size.id,
-                            value: size.size,
-                          }))}
-                        />
-                      </div>
-                      <div className="Quantities">
-                        <p>Quantity</p>
-                        <div className="Counter">
-                          <div
-                            className="CounterButton"
-                            onClick={() => updateQuantity(-1)}
-                          >
-                            {" < "}
-                          </div>
-                          <div>{quantity}</div>
-                          <div
-                            className="CounterButton"
-                            onClick={() => updateQuantity(+1)}
-                          >
-                            {" > "}
-                          </div>
-                        </div>
-                      </div>
-                      <DefaultButton
-                        classNames="ProductDetailButton"
-                        background="black"
+                      <Form
+                        onValuesChange={({ size }) => setCurrentSize(size)}
+                        onFinish={onAddToCart}
                       >
-                        <div className="AddToCartButton">
-                          <img className="SvgIcon" src={Cart} alt="cart" />
-                          <div>ADD TO CART</div>
+                        <div className="ProductPrice">
+                          <h3>$ {product.price}</h3>
+                          <p>Per price</p>
                         </div>
-                      </DefaultButton>
+                        <h2 className="ProductDetailTitle">{product.title}</h2>
+                        <p className="Description">{product.description}</p>
+                        <StarReviews
+                          productDetail
+                          rating={product.rating}
+                          reviewsCount={product.reviews_count}
+                        />
+                        <div className="ColorSelect">
+                          <p>COLOR</p>
+                          <div className="ColorSelectItems">
+                            {product.colors.map((color, i) => (
+                              <div
+                                style={{ background: color.color }}
+                                key={i}
+                                className="ColorItem"
+                                onClick={() => setColorIndex(i)}
+                              >
+                                {colorIndex === i ? (
+                                  <i className="fas fa-check"></i>
+                                ) : null}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                        <div className="SelectSize">
+                          <Form.Item name="size" rules={[{ required: true }]}>
+                            <Select
+                              className="Select"
+                              placeholder={"Select size"}
+                              style={{ width: 120 }}
+                            >
+                              {product.sizes.map((option) => (
+                                <Select.Option
+                                  key={option.id}
+                                  value={option.id}
+                                >
+                                  {option.size}
+                                </Select.Option>
+                              ))}
+                            </Select>
+                          </Form.Item>
+                        </div>
+                        <div className="Quantities">
+                          <p>Quantity</p>
+                          <div className="Counter">
+                            <div
+                              className="CounterButton"
+                              onClick={() => updateQuantity(-1)}
+                            >
+                              {" < "}
+                            </div>
+                            <div>{quantity}</div>
+                            <div
+                              className="CounterButton"
+                              onClick={() => updateQuantity(+1)}
+                            >
+                              {" > "}
+                            </div>
+                          </div>
+                        </div>
+                        {selectErrorMessage ? (
+                          <p style={{ color: "tomato" }}>
+                            {selectErrorMessage}
+                          </p>
+                        ) : null}
+                        <DefaultButton
+                          classNames="ProductDetailButton"
+                          background="black"
+                          type="submit"
+                        >
+                          <div className="AddToCartButton">
+                            <img className="SvgIcon" src={Cart} alt="cart" />
+                            <div>ADD TO CART</div>
+                          </div>
+                        </DefaultButton>
+                      </Form>
                     </Col>
                   </Row>
                 </div>

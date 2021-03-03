@@ -95,7 +95,7 @@ const StoreFront = () => {
   };
 
   const fetchBlogs = () => {
-    const url = `${BASE_URL}/api/blog?top=true`;
+    const url = `${BASE_URL}/api/blog/?top=true`;
     setBlogsError(false);
     setLoadingBlogs(true);
     axios
