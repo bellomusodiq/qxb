@@ -154,7 +154,7 @@ const StoreFront = () => {
             <Col md={24} lg={17}>
               <div className="StoreFrontBanner">
                 <h1>
-                  QXB
+                  QxB
                   <br />
                   Collect<span>io</span>ns
                 </h1>

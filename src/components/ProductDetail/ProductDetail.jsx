@@ -167,7 +167,6 @@ const ProductDetail = () => {
                         <h2 className="ProductDetailTitle">{product.title}</h2>
                         <p className="Description">{product.description}</p>
                         <StarReviews
-                          productDetail
                           rating={product.rating}
                           reviewsCount={product.reviews_count}
                         />
@@ -182,7 +181,10 @@ const ProductDetail = () => {
                                 onClick={() => setColorIndex(i)}
                               >
                                 {colorIndex === i ? (
-                                  <i className="fas fa-check"></i>
+                                  <i
+                                    style={{ color: color.icon_color }}
+                                    className="fas fa-check"
+                                  ></i>
                                 ) : null}
                               </div>
                             ))}
@@ -263,7 +265,7 @@ const ProductDetail = () => {
                     </p>
                   </div>
                   <div className="">
-                    <h4>QXB Products</h4>
+                    <h4>QxB Products</h4>
                     <p>
                       {product.qxb_products.slice(0, 400)}
                       <Link to="#home">See more</Link>

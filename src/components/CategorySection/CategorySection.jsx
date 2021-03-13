@@ -89,7 +89,7 @@ const CategorySection = () => {
       .then((result) => {
         setCategories(result.data);
       })
-      .then(() => {
+      .catch(() => {
         setCategoriesError(true);
         setCategoriesLoading(false);
       });
@@ -151,8 +151,8 @@ const CategorySection = () => {
   };
 
   const resetFilter = () => {
-    history.push("/category")
-  }
+    history.push("/category");
+  };
 
   const setRanges = (lower, upper) => {
     console.log(lower, upper);

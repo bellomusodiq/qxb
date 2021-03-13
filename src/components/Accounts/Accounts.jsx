@@ -149,7 +149,7 @@ export const getFavourites = (
   firstLoaded = true,
   newUrl = null
 ) => {
-  checkAuth(history);
+  // checkAuth(history);
   const userId = localStorage.getItem("userId");
   let url = `${BASE_URL}/api/favourites/?user=${userId}`;
   const headers = {
@@ -166,10 +166,8 @@ export const getFavourites = (
         updateFavourite({
           loading: false,
           error: false,
-          next: result.data.next,
-          favourites: result.data.results,
+          favourites: result.data,
           firstLoaded: firstLoaded,
-          count: result.data.count,
         })
       );
     })

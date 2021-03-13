@@ -12,7 +12,7 @@ const Collections = ({ data }) => {
       <Card >
         <div className="CollectionsCard">
           <Title className="CollectionsCardHeader" level={2}>
-            QXB Collections
+            QxB Collections
           </Title>
           {data
             ? data.map((item) => (

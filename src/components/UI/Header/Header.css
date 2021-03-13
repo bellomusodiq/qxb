@@ -27,16 +27,23 @@
   font-weight: normal;
   margin: 0;
 }
+.LogoutBtn {
+  font-size: 1.5em;
+}
 .HeaderBottom {
   display: flex;
   justify-content: space-between;
   padding: 50px 5% 25px;
+  position: sticky !important;
 }
-nav {
+.HeaderBottom > div {
+  cursor: pointer;
+}
+.HeaderBottom nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 70%;
+  width: 40%;
 }
 a {
   text-decoration: none;
@@ -46,11 +53,13 @@ a:after,
 a:visited {
   color: inherit;
 }
-nav > a, nav > div {
+nav > a,
+nav > div {
   color: #a3a3a3 !important;
   cursor: pointer;
 }
-nav > a:hover, nav > div:hover {
+nav > a:hover,
+nav > div:hover {
   color: #171717 !important;
 }
 .Logo {
@@ -88,6 +97,23 @@ nav > a:hover, nav > div:hover {
   background-color: #ccc;
   color: #fff;
 }
+.HeaderSearch {
+  background-color: #fff;
+  padding: 2rem;
+  transition: 0.1s ease all;
+  overflow: hidden;
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+}
+.HeaderSearch input {
+  height: 40px;
+  width: 100%;
+  border: 1px solid #ccc;
+  color: #141414;
+  border-radius: 5px;
+  padding: 0 20px;
+}
 @media screen and (max-width: 1240px) {
   nav {
     width: 90%;
@@ -96,13 +122,18 @@ nav > a:hover, nav > div:hover {
     align-items: center;
   }
   .Logo {
-    height: 30px!important;
+    height: 30px !important;
     padding: 5px 5px 0 5px;
     display: flex;
     align-items: center;
   }
   nav button {
     transform: scale(0.8);
+  }
+}
+@media screen and (max-width: 800px) {
+  .Header nav {
+    width: 70% !important;
   }
 }
 @media screen and (max-width: 480px) {

@@ -6,8 +6,7 @@
 .HeaderMobileTop {
   display: flex;
   justify-content: center;
-  padding: 10px;
-  background: #cccccc;
+  padding: 5px;
 }
 .HeaderMobileLogo {
   display: flex;
@@ -17,7 +16,6 @@
   font-style: normal;
   font-weight: normal;
   text-align: center;
-  color: #171717;
   font-size: 0.6em;
 }
 .HeaderMobileLogo > h1 {
@@ -28,6 +26,13 @@
   height: 35px !important;
   margin-right: 10px;
 }
+.HeaderMobileLogo > a {
+  width: 50%;
+  box-sizing: border-box;
+}
+.HeaderMobileLogo > a > img {
+  width: 100%;
+}
 .HeaderMobileNav {
   display: flex;
   justify-content: space-between;
@@ -37,7 +42,9 @@
   margin-bottom: 10px;
 }
 .HeaderMobileNav > nav {
-  width: 50%;
+  width: 90%;
+  display: flex;
+  justify-content: flex-end;
 }
 .HeaderMobileNav > nav button {
   width: 40px;
@@ -45,4 +52,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.MobileLogout {
+  margin-left: 5px;
 }

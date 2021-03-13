@@ -3,32 +3,24 @@ import * as actionTypes from "../../actions/types";
 const INITIAL_STATE = {
   loading: false,
   error: false,
-  next: null,
-  favourites: null,
-  firstLoaded: false,
-  count: 0
+  favourites: [],
+  count: 0,
+  favouritesMap: {},
 };
 
 const favouriteReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case actionTypes.UPDATE_FAVOURITES:
-      const { loading, error, next, favourites, firstLoaded, count } = action.payload;
-      let newFavourites = state.favourites;
-      if (favourites) {
-        if (!firstLoaded && (state.favourites !== null)) {
-          newFavourites = [...state.favourites, ...favourites];
-        } else {
-          newFavourites = favourites;
-        }
-      }
+      const { loading, error, favourites } = action.payload;
+      const favouritesMap = {};
+      favourites?.map((favourite) => (favouritesMap[favourite.product_obj.id] = true));
       return {
         ...state,
         loading: loading !== null ? loading : state.loading,
         error: error !== null ? error : state.error,
-        next: next !== null ? next : state.next,
-        favourites: newFavourites,
-        firstLoaded: true,
-        count: count || state.count
+        favourites,
+        favouritesMap,
+        count: favourites?.length || 0,
       };
     default:
       return state;

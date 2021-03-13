@@ -77,6 +77,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: black !important;
+}
+.RemoveFavourite > button {
+  background-color: black;
 }
 .AddToCart {
   border: 1px solid black !important;

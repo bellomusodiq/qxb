@@ -3,6 +3,8 @@ import React from "react";
 import { DefaultButton } from "../Buttons/Buttons";
 import "./Footer.css";
 
+const year = new Date().getFullYear()
+
 const Footer = () => (
   <div className="Footer">
     <div className="FooterTop">
@@ -51,7 +53,7 @@ const Footer = () => (
       </div>
     </div>
     <div className="FooterBottom">
-      <p>&copy; 2021 QXB, Inc.</p>
+      <p>&copy; {year} QxB, Inc.</p>
       <p>Privacy Policy</p>
       <p>Terms of Use</p>
     </div>

@@ -43,7 +43,7 @@ const Payment = () => {
           />
           <PaymentItem
             title="Cash Payment"
-            description="Uppon receipt of the goods"
+            description="Upon receipt of the goods"
             selected={current === "cash"}
             onClick={() => setCurrent("cash")}
           />

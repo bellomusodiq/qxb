@@ -68,14 +68,26 @@ function App() {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  const fetchCart = () => {
+    if (!localStorage.getItem("cartId")) {
+      axios.post(`${BASE_URL}/api/cart/`, {})
+      .then(res => {
+        localStorage.setItem("cartId", res.data.id);
+        fetchCartItems(dispatch);
+      })
+    } else {
+      fetchCartItems(dispatch);
+    }
+  }
+
   useEffect(() => {
-    fetchCartItems(dispatch);
+    fetchCart();
     getFavourites(history, dispatch, true);
   }, []);
 
   return (
     <div className="App">
-      <Header />
+      <Header openSideNav={() => setShowSideNav(true)} />
       <SideNav show={show} close={() => setShowSideNav(false)} />
       <HeaderMobile openSideNav={() => setShowSideNav(true)} />
       <Switch>

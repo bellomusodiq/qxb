@@ -87,4 +87,14 @@
     display: block;
     margin-top: 20px;
   }
+  .CategoryProducts > * {
+    margin: 10px 5px;
+  }
+  .CategoryProducts .ProductItem > img {
+    height: 150px;
+  }
+  .SearchInput {
+    width: 100%;
+    margin-top: 20px;
+  }
 }

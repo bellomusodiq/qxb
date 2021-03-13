@@ -5,7 +5,7 @@ import StarReviews from "../../StarReviews/StarReviews";
 import { CircleButton } from "../../Buttons/Buttons";
 import { useHistory } from "react-router-dom";
 import { getFavourites } from "../../../Accounts/Accounts";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { BASE_URL } from "../../../../CONFIG";
 import axios from "axios";
 import Alert from "../../Alert/Alert";
@@ -21,6 +21,7 @@ const ProductItem = ({
 }) => {
   const history = useHistory();
   const dispatch = useDispatch();
+  const favouritesMap = useSelector((state) => state.favourites.favouritesMap);
 
   const [showAlert, setShowAlert] = useState(false);
   const [message, setMessage] = useState("");
@@ -93,6 +94,10 @@ const ProductItem = ({
     }
   };
 
+  const inFavourites = () => {
+    return favouritesMap[id];
+  };
+
   return (
     <>
       <Alert show={showAlert} error={error} message={message} />
@@ -114,12 +119,12 @@ const ProductItem = ({
                     <CircleButton
                       onClick={toggleFavourite}
                       background="black"
-                      classNames={!darkButton ? "Favourite" : "RemoveFavourite"}
+                      classNames={!inFavourites() ? "Favourite" : "RemoveFavourite"}
                     >
                       <div className="Badged">
                         <i
                           className="far fa-heart"
-                          style={{ color: darkButton ? "white" : "black" }}
+                          style={{ color: inFavourites() ? "white" : "black" }}
                         ></i>
                       </div>
                     </CircleButton>

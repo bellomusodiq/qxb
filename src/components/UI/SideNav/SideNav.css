@@ -2,46 +2,57 @@
 .sideNav {
   display: none;
 }
-@media screen and (max-width: 500px) {
-  .Backdrop {
-    display: block;
-    position: fixed;
-    z-index: 50;
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.575);
-  }
+.Backdrop {
+  display: block;
+  position: fixed;
+  z-index: 50;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.575);
+  top: 0;
+}
+.SideNav {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  z-index: 51;
+  width: 35vw;
+  top: 0;
+  height: 100vh;
+  background: white;
+  transition: 0.4s ease all;
+  padding: 40px 30px;
+}
+.CancelButton {
+  text-align: right;
+}
+.CancelButton > i {
+  font-size: 2em !important;
+}
+.SideNav-Nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: 70px;
+}
+.SideNav a {
+  color: #a3a3a3;
+  margin: 15px 0;
+  text-align: center;
+  width: 100%;
+  text-transform: uppercase;
+}
+.SideNav a.Active {
+  color: #171717;
+}
+@media screen and (max-width: 800px) {
   .SideNav {
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    z-index: 51;
+    width: 50vw;
+  }
+}
+@media screen and (max-width: 480px) {
+  .SideNav {
     width: 70vw;
-    height: 100vh;
-    background: white;
-    transition: 0.4s ease all;
-    padding: 40px 30px;
-  }
-  .CancelButton {
-    text-align: right;
-  }
-  .CancelButton > i {
-    font-size: 2em !important;
-  }
-  .SideNav-Nav {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    margin-top: 70px;
-  }
-  .SideNav a {
-    color: #a3a3a3;
-    margin: 15px 0;
-    text-align: center;
-    width: 100%;
-  }
-  .SideNav a.Active {
-    color: #171717;
   }
 }
