@@ -17,7 +17,7 @@
   flex-direction: column;
   position: fixed;
   z-index: 51;
-  width: 35vw;
+  width: 20vw;
   top: 0;
   height: 100vh;
   background: white;
@@ -48,7 +48,7 @@
 }
 @media screen and (max-width: 800px) {
   .SideNav {
-    width: 50vw;
+    width: 30vw;
   }
 }
 @media screen and (max-width: 480px) {

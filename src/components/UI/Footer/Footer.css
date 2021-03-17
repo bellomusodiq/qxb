@@ -6,28 +6,40 @@
   margin-right: 10px;
 }
 .FooterTop {
-  padding: 50px 5%;
+  padding: 0 5% 10px;
   background: #cccccc;
   display: grid;
   grid-template-columns: 15% 15% 15% 15% auto;
   grid-column-gap: 10px;
   box-sizing: border-box;
 }
-.FooterTop:not(.Subscribe) > div {
+.FooterTop > div {
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
+}
+.FooterTop:not(.Subscribe) > div > div {
+  display: none;
+}
+.FooterItems {
+  display: flex !important;
+  flex-direction: column;
+  margin-bottom: -20px;
 }
 .FooterTop a,
 .FooterTop p {
   color: #171717;
   margin: 10px 0;
   font-size: 1.2em;
+  cursor: pointer;
 }
 .FooterTop p {
   font-weight: bold;
 }
 .SubscribeForm {
   display: flex;
+  margin-top: 20px;
+  padding-bottom: 20px;
 }
 .SubscribeForm input {
   background-color: #cccccc;
@@ -36,6 +48,7 @@
   box-sizing: border-box;
   padding: 5px 15px;
   font-size: 1.4em;
+  margin-bottom: 10px;
 }
 .FooterBottom {
   background: #171717;
@@ -50,6 +63,7 @@
 @media screen and (max-width: 500px) {
   .FooterTop {
     grid-template-columns: 50% 50%;
+    display: none;
   }
   .FooterTop > div {
     margin-top: 30px;

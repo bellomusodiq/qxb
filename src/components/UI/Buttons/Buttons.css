@@ -3,6 +3,7 @@
   cursor: pointer;
   font-family: "TT Norms";
   border: 1px solid black;
+  outline: none;
 }
 .CircleButton {
   padding: 7px;

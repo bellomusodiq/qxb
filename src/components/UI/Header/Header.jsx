@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, NavLink, useHistory, useLocation } from "react-router-dom";
 import "./Header.css";
-import Logo from "../../../assets/images/logo.png";
 import { CircleButton } from "../Buttons/Buttons";
 import Cart from "../../../assets/images/cart.svg";
 import LogoText from "../../../assets/images/logo-text.png";
@@ -46,12 +45,9 @@ const Header = ({ openSideNav }) => {
       <header className="Header">
         <div className="HeaderTop">
           <div className="Location"></div>
-          <Link to="/" className="HeaderText">
-            <img height="100%" src={LogoText} alt="logo" />
-          </Link>
         </div>
         <div className="HeaderBottom">
-          <div className="">
+          <div className="HeaderMenu">
             <img
               src={Menu}
               onClick={openSideNav}
@@ -59,8 +55,12 @@ const Header = ({ openSideNav }) => {
               className="MenuBtn"
             />
           </div>
-          <nav>
-            {/* <NavLink activeClassName="Active" exact to="/">
+          <Link to="/" className="HeaderText">
+            <img height="100%" src={LogoText} alt="logo" />
+          </Link>
+          <div>
+            <nav>
+              {/* <NavLink activeClassName="Active" exact to="/">
             HOME
           </NavLink>
           <NavLink activeClassName="Active" exact to="/catalogue/backpacks">
@@ -76,40 +76,41 @@ const Header = ({ openSideNav }) => {
             <div>ACCESSORIES</div>
           </HeaderDropdown>
           */}
-            <CircleButton onClick={() => setOpenSearch(!openSearch)}>
-              <i className="fas fa-search"></i>
-            </CircleButton>
-            <Link to="/accounts">
-              <CircleButton>
-                <i className="far fa-user"></i>
+              <CircleButton onClick={() => setOpenSearch(!openSearch)}>
+                <i className="fas fa-search"></i>
               </CircleButton>
-            </Link>
-            {localStorage.getItem("userId") ? (
-              <Link to="/accounts/favourites">
+              <Link to="/accounts">
                 <CircleButton>
-                  <div className="Badged">
-                    <i className="far fa-heart"></i>
-                    <div className="BadgedCounter BadgeCounterFav">
-                      {favouritesCount}
+                  <i className="far fa-user"></i>
+                </CircleButton>
+              </Link>
+              {localStorage.getItem("userId") ? (
+                <Link to="/accounts/favourites">
+                  <CircleButton>
+                    <div className="Badged">
+                      <i className="far fa-heart"></i>
+                      <div className="BadgedCounter BadgeCounterFav">
+                        {favouritesCount}
+                      </div>
                     </div>
+                  </CircleButton>
+                </Link>
+              ) : null}
+              <Link to="/cart">
+                <CircleButton background="black">
+                  <div className="Badged">
+                    <img className="SvgIcon" src={Cart} alt="cart" />
+                    <div className="BadgedCounter">{cartCount}</div>
                   </div>
                 </CircleButton>
               </Link>
-            ) : null}
-            <Link to="/cart">
-              <CircleButton background="black">
-                <div className="Badged">
-                  <img className="SvgIcon" src={Cart} alt="cart" />
-                  <div className="BadgedCounter">{cartCount}</div>
-                </div>
-              </CircleButton>
-            </Link>
-            {localStorage.getItem("token") ? (
-              <CircleButton onClick={logout} background="white">
-                <i className="fas LogoutBtn fa-sign-out-alt"></i>
-              </CircleButton>
-            ) : null}
-          </nav>
+              {localStorage.getItem("token") ? (
+                <CircleButton onClick={logout} background="white">
+                  <i className="fas LogoutBtn fa-sign-out-alt"></i>
+                </CircleButton>
+              ) : null}
+            </nav>
+          </div>
         </div>
       </header>
       <div

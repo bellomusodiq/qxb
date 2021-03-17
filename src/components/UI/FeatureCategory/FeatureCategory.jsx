@@ -12,11 +12,6 @@ const FeatureCategory = ({bestSeller, newArrivals}) => {
       key: "best_sellers",
       children: <ProductItems data={bestSeller} />,
     },
-    {
-      title: "NEW ARRIVALS",
-      key: "new_arrivals",
-      children: <ProductItems data={newArrivals} />,
-    },
   ];
 
   return (

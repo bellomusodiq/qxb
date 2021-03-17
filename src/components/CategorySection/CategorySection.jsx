@@ -88,6 +88,7 @@ const CategorySection = () => {
       .get(url)
       .then((result) => {
         setCategories(result.data);
+        setCategoriesLoading(false);
       })
       .catch(() => {
         setCategoriesError(true);
@@ -155,7 +156,6 @@ const CategorySection = () => {
   };
 
   const setRanges = (lower, upper) => {
-    console.log(lower, upper);
     if (query.has("lower")) {
       query.delete("lower");
     }

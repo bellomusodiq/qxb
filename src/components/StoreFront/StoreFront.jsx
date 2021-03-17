@@ -147,11 +147,11 @@ const StoreFront = () => {
       <>
         <CatalogueBanner show={window.screen.width <= 480} />
         <div className="StoreFront">
-          <Row gutter={{ md: 0, lg: 10, xl: 0 }} justify="space-around">
-            <Col xs={0} lg={7}>
+          <Row gutter={{ md: 0, lg: 10, xl: 0 }} justify="stretch">
+            {/* <Col xs={0} lg={7}>
               <Collections data={collections} />
-            </Col>
-            <Col md={24} lg={17}>
+            </Col> */}
+            <Col md={24} lg={24}>
               <div className="StoreFrontBanner">
                 <h1>
                   QxB
@@ -179,18 +179,9 @@ const StoreFront = () => {
               bestSeller={bestSeller}
               newArrivals={newArrivals}
             />
-            <div className="LinkCatalog">
-              <DefaultButton
-                onClick={() => history.push("/catalogue")}
-                background="white"
-              >
-                GO TO CATALOG
-              </DefaultButton>
-            </div>
             <CollectionBanner />
           </Row>
         </div>
-        <BlogList data={blogs} />
       </>
     );
   } else {

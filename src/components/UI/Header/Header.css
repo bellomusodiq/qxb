@@ -4,11 +4,13 @@
   justify-content: stretch;
   height: max-content;
   margin-top: 20px;
+  position: absolute;
+  width: 100%;
+  z-index: 2;
 }
 .HeaderTop {
   display: flex;
-  padding: 15px 5%;
-  background: #eeeeee;
+  padding: 20px 5%;
 }
 .Location {
   width: fit-content;
@@ -33,17 +35,26 @@
 .HeaderBottom {
   display: flex;
   justify-content: space-between;
-  padding: 50px 5% 25px;
-  position: sticky !important;
+  padding: 0px 5%;
+  position: sticky;
 }
-.HeaderBottom > div {
-  cursor: pointer;
+.HeaderBottom > * {
+  width: 33% !important;
 }
 .HeaderBottom nav {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 40%;
+  justify-content: flex-end;
+  width: 100%;
+}
+.HeaderBottom nav > * {
+  margin: 0 10px;
+}
+.HeaderMenu > img {
+  background: white;
+  padding: 10px;
+}
+.HeaderBottom > div {
+  cursor: pointer;
 }
 a {
   text-decoration: none;
@@ -55,7 +66,7 @@ a:visited {
 }
 nav > a,
 nav > div {
-  color: #a3a3a3 !important;
+  color: #fff !important;
   cursor: pointer;
 }
 nav > a:hover,
@@ -113,6 +124,7 @@ nav > div:hover {
   color: #141414;
   border-radius: 5px;
   padding: 0 20px;
+  background: rgb(238, 238, 238);
 }
 @media screen and (max-width: 1240px) {
   nav {
