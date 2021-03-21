@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { BASE_URL } from "../../CONFIG";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+import { Table } from "antd";
+import { useHistory } from "react-router";
+import { updateCarts } from "../../store/actions/carts";
 
 export default function CheckoutForm() {
   const [succeeded, setSucceeded] = useState(false);
@@ -14,6 +17,7 @@ export default function CheckoutForm() {
   const elements = useElements();
 
   const account = useSelector((state) => state.account);
+  const history = useHistory();
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
@@ -59,6 +63,7 @@ export default function CheckoutForm() {
     setDisabled(event.empty);
     setError(event.error ? event.error.message : "");
   };
+  const dispatch = useDispatch();
   const handleSubmit = async (ev) => {
     ev.preventDefault();
     setProcessing(true);
@@ -72,7 +77,6 @@ export default function CheckoutForm() {
       setError(`Payment failed ${payload.error.message}`);
       setProcessing(false);
     } else {
-      console.log(payload);
       axios
         .post(`${BASE_URL}/api/confirm-payment-intent/`, {
           cart_id: localStorage.getItem("cartId"),
@@ -87,6 +91,19 @@ export default function CheckoutForm() {
           postal_code: account.postal,
         })
         .then((res) => {
+          localStorage.removeItem("cartId");
+          dispatch(
+            updateCarts({
+              loading: false,
+              error: false,
+              previous: null,
+              next: null,
+              carts: null,
+              count: 0,
+              totalAmount: 0,
+            })
+          );
+          history.push("/orders/" + res.data[0].order);
           setError(null);
           setProcessing(false);
           setSucceeded(true);
@@ -99,38 +116,32 @@ export default function CheckoutForm() {
   };
 
   return (
-    <div className="CheckoutForm">
-      <form id="payment-form" onSubmit={handleSubmit}>
-        <CardElement
-          id="card-element"
-          options={cardStyle}
-          onChange={handleChange}
-        />
-        <button disabled={processing || disabled || succeeded} id="submit">
-          <span id="button-text">
-            {processing ? (
-              <div className="spinner" id="spinner"></div>
-            ) : (
-              "Pay now"
-            )}
-          </span>
-        </button>
-        {/* Show any error that happens when processing the payment */}
-        {error && (
-          <div className="card-error" role="alert">
-            {error}
-          </div>
-        )}
-        {/* Show a success message upon completion */}
-        <p className={succeeded ? "result-message" : "result-message hidden"}>
-          Payment succeeded, see the result in your
-          <a href={`https://dashboard.stripe.com/test/payments`}>
-            {" "}
-            Stripe dashboard.
-          </a>{" "}
-          Refresh the page to pay again.
-        </p>
-      </form>
-    </div>
+    <>
+      <div className="CheckoutForm">
+        <form id="payment-form" onSubmit={handleSubmit}>
+          <CardElement
+            id="card-element"
+            options={cardStyle}
+            onChange={handleChange}
+          />
+          <button disabled={processing || disabled || succeeded} id="submit">
+            <span id="button-text">
+              {processing ? (
+                <div className="spinner" id="spinner"></div>
+              ) : (
+                "Pay now"
+              )}
+            </span>
+          </button>
+          {/* Show any error that happens when processing the payment */}
+          {error && (
+            <div className="card-error" role="alert">
+              {error}
+            </div>
+          )}
+          {/* Show a success message upon completion */}
+        </form>
+      </div>
+    </>
   );
 }

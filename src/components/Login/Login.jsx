@@ -6,6 +6,8 @@ import axios from "axios";
 import { BASE_URL } from "../../CONFIG";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import Alert from "../UI/Alert/Alert";
+import { fetchCartItems } from "../../App";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
@@ -15,6 +17,7 @@ const Login = () => {
 
   const history = useHistory();
   const location = useLocation();
+  const dispatch = useDispatch();
 
   const login = (data) => {
     const url = `${BASE_URL}/api/login/`;
@@ -30,6 +33,7 @@ const Login = () => {
         localStorage.setItem("token", result.data.token);
         localStorage.setItem("userId", result.data.user_id);
         localStorage.setItem("cartId", result.data.cart_id);
+        fetchCartItems(dispatch);
         setTimeout(() => {
           setShowAlert(false);
           const params = new URLSearchParams(location.search);

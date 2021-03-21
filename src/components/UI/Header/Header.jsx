@@ -4,9 +4,10 @@ import "./Header.css";
 import { CircleButton } from "../Buttons/Buttons";
 import Cart from "../../../assets/images/cart.svg";
 import LogoText from "../../../assets/images/logo-text.png";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Menu from "../../../assets/images/menu.svg";
 import { useRef } from "react";
+import { fetchCart } from "../../../App";
 
 const Header = ({ openSideNav }) => {
   const [isActive, setIsActive] = useState("/");
@@ -16,11 +17,14 @@ const Header = ({ openSideNav }) => {
   const [openSearch, setOpenSearch] = useState(false);
   const [searchVal, setSearchVal] = useState("");
 
+  const dispatch = useDispatch();
+
   const inputRef = useRef();
   const history = useHistory();
 
   const logout = () => {
     localStorage.clear();
+    fetchCart(dispatch)
     history.push("/");
   };
 
@@ -43,9 +47,6 @@ const Header = ({ openSideNav }) => {
   return (
     <>
       <header className="Header">
-        <div className="HeaderTop">
-          <div className="Location"></div>
-        </div>
         <div className="HeaderBottom">
           <div className="HeaderMenu">
             <img
@@ -130,6 +131,7 @@ const Header = ({ openSideNav }) => {
           />
         </form>
       </div>
+      <div className="HeaderSpacing"></div>
     </>
   );
 };

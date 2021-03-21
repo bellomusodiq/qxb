@@ -40,7 +40,7 @@ const ProductDetail = () => {
     const data = {
       cart: localStorage.getItem("cartId"),
       product: id,
-      quantity: 1,
+      quantity: quantity,
       color: product.colors[colorIndex]?.id,
       size: currentSize,
     };

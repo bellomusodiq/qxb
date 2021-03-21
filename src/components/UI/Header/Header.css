@@ -3,10 +3,14 @@
   flex-direction: column;
   justify-content: stretch;
   height: max-content;
-  margin-top: 20px;
-  position: absolute;
   width: 100%;
   z-index: 2;
+  position: fixed !important;
+  top: 0;
+  background-color: white;
+}
+.HeaderSpacing {
+  margin-bottom: 100px;
 }
 .HeaderTop {
   display: flex;
@@ -35,8 +39,7 @@
 .HeaderBottom {
   display: flex;
   justify-content: space-between;
-  padding: 0px 5%;
-  position: sticky;
+  padding: 20px 5%;
 }
 .HeaderBottom > * {
   width: 33% !important;
@@ -154,5 +157,8 @@ nav > div:hover {
   }
   nav i {
     font-size: 0.6em;
+  }
+  .HeaderSpacing {
+    display: none;
   }
 }

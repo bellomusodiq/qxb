@@ -24,12 +24,12 @@ const reducer = (state = INITIAL_STATE, action) => {
       } = action.payload;
       return {
         ...state,
-        loading: loading !== null ? loading : state.loading,
-        error: error !== null ? error : state.error,
+        loading: loading,
+        error: error,
         carts: carts,
-        next: next !== null ? next : state.next,
-        previous: previous ? previous : state.previous,
-        count: count || state.count,
+        next: next,
+        previous: previous,
+        count: count,
         totalAmount: totalAmount,
       };
     default:

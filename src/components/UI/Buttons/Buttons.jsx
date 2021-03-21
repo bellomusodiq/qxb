@@ -37,7 +37,8 @@ export const DefaultButton = ({
   classNames,
   loading,
   type = "button",
-  disabled = false
+  disabled = false,
+  style = {}
 }) => {
   const { bck, col } = getBackgroundColor(background);
   let cursor = "pointer";
@@ -51,6 +52,7 @@ export const DefaultButton = ({
     <button
       onClick={loading || disabled ? null : onClick}
       style={{
+        ...style,
         background: bck,
         color: col,
         opacity: loading || disabled ? 0.4 : 1,

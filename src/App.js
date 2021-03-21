@@ -25,6 +25,7 @@ import { updateCarts } from "./store/actions/carts";
 import { BASE_URL } from "./CONFIG";
 import axios from "axios";
 import Payment from "./components/Payment/Payment";
+import OrdersDetail from "./components/Accounts/Orders/OrdersDetail";
 
 export const fetchCartItems = (dispatch, newUrl = null) => {
   const cartId = localStorage.getItem("cartId");
@@ -63,25 +64,24 @@ export const fetchCartItems = (dispatch, newUrl = null) => {
     });
 };
 
+export const fetchCart = (dispatch) => {
+  if (!localStorage.getItem("cartId")) {
+    axios.post(`${BASE_URL}/api/cart/`, {}).then((res) => {
+      localStorage.setItem("cartId", res.data.id);
+      fetchCartItems(dispatch);
+    });
+  } else {
+    fetchCartItems(dispatch);
+  }
+};
+
 function App() {
   const [show, setShowSideNav] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const fetchCart = () => {
-    if (!localStorage.getItem("cartId")) {
-      axios.post(`${BASE_URL}/api/cart/`, {})
-      .then(res => {
-        localStorage.setItem("cartId", res.data.id);
-        fetchCartItems(dispatch);
-      })
-    } else {
-      fetchCartItems(dispatch);
-    }
-  }
-
   useEffect(() => {
-    fetchCart();
+    fetchCart(dispatch);
     getFavourites(history, dispatch, true);
   }, []);
 
@@ -90,19 +90,22 @@ function App() {
       <Header openSideNav={() => setShowSideNav(true)} />
       <SideNav show={show} close={() => setShowSideNav(false)} />
       <HeaderMobile openSideNav={() => setShowSideNav(true)} />
-      <Switch>
-        <Route path="/product/:id" component={ProductDetail} />
-        <Route path="/catalogue/:id" component={Catalogue} />
-        <Route path="/catalogue" component={Catalogue} />
-        <Route path="/cart" component={Cart} />
-        <Route path="/category" component={CategorySection} />
-        <Route path="/accounts" component={Accounts} />
-        <Route path="/checkout" component={Checkout} />
-        <Route path="/signup" component={Signup} />
-        <Route path="/login" component={Login} />
-        <Route path="/payments" component={Payment} />
-        <Route path="/" component={StoreFront} exact />
-      </Switch>
+      <div style={{ minHeight: "calc(100vh - 10rem)" }}>
+        <Switch>
+          <Route path="/product/:id" component={ProductDetail} />
+          <Route path="/catalogue/:id" component={Catalogue} />
+          <Route path="/orders/:id" component={OrdersDetail} />
+          <Route path="/catalogue" component={Catalogue} />
+          <Route path="/cart" component={Cart} />
+          <Route path="/category" component={CategorySection} />
+          <Route path="/accounts" component={Accounts} />
+          <Route path="/checkout" component={Checkout} />
+          <Route path="/signup" component={Signup} />
+          <Route path="/login" component={Login} />
+          <Route path="/payments" component={Payment} />
+          <Route path="/" component={StoreFront} exact />
+        </Switch>
+      </div>
       <Footer />
     </div>
   );

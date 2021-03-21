@@ -5,7 +5,8 @@ import { Link, useHistory } from "react-router-dom";
 import Cart from "../../../assets/images/cart.svg";
 import { CircleButton } from "../Buttons/Buttons";
 import Menu from "../../../assets/images/menu.svg";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCart } from "../../../App";
 
 const HeaderMobile = ({ openSideNav }) => {
   const cartCount = useSelector((state) => state.carts.count);
@@ -13,11 +14,13 @@ const HeaderMobile = ({ openSideNav }) => {
   const [searchVal, setSearchVal] = useState("");
   const [openSearch, setOpenSearch] = useState(false);
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const inputRef = useRef();
 
   const logout = () => {
     localStorage.clear();
+    fetchCart(dispatch);
     history.push("/");
   };
 
