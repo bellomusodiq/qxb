@@ -10,13 +10,12 @@ const FeatureCategory = ({bestSeller, newArrivals}) => {
     {
       title: "BEST SELLERS",
       key: "best_sellers",
-      children: <ProductItems data={bestSeller} />,
+      children: <ProductItems hidePrices data={bestSeller} />,
     },
   ];
 
   return (
     <div className="FeatureCategory">
-      <h3>Featured Category</h3>
       <Tab options={tabContent} />
     </div>
   );

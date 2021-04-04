@@ -77,10 +77,19 @@ export const fetchCart = (dispatch) => {
 
 function App() {
   const [show, setShowSideNav] = useState(false);
+  const [socials, setSocials] = useState({});
   const dispatch = useDispatch();
   const history = useHistory();
 
+  const getSocials = () => {
+    const url = `${BASE_URL}/api/socials/`;
+    axios.get(url).then((res) => {
+      setSocials(res.data);
+    });
+  };
+
   useEffect(() => {
+    getSocials();
     fetchCart(dispatch);
     getFavourites(history, dispatch, true);
   }, []);
@@ -106,7 +115,7 @@ function App() {
           <Route path="/" component={StoreFront} exact />
         </Switch>
       </div>
-      <Footer />
+      <Footer socials={socials} />
     </div>
   );
 }

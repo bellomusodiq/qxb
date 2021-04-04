@@ -2,11 +2,10 @@
   /* padding: 0 5%; */
 }
 .StoreFrontBanner {
-  background-color: #cccccc;
   height: 695px;
-  background-image: url("../../assets/images/store-front.png");
   background-repeat: no-repeat;
-  background-position: right;
+  background-size: cover;
+  background-position: center;
 }
 .StoreFrontBanner > h1 {
   position: absolute;
@@ -19,6 +18,19 @@
   line-height: 202px;
   color: #171717;
   mix-blend-mode: normal;
+}
+.Categories {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  width: 100%;
+  justify-content: flex-start;
+}
+.CategoryContainer {
+  width: 300px !important;
+  height: 300px;
+  margin: 0 10px;
+  color: #171717;
 }
 .StoreFrontBanner > h1 > span {
   color: white;
@@ -41,16 +53,39 @@
   margin-bottom: 30px;
 }
 .TopCategories {
-  display: flex;
-  flex-wrap: wrap;
+  width: 95%;
+  overflow: auto;
+  white-space: nowrap;
 }
 .TopCategories > * {
   margin: 10px 20px !important;
-  width: 250px;
+  display: inline-block;
 }
 .LinkCatalog {
   margin: auto;
   margin-bottom: 150px;
+}
+.CategoryContainer {
+  height: 300px;
+}
+.CategoryContainer > div {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.CategoryContainer > div > img {
+  height: 90%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  flex: 1;
+}
+.CategoryContainer .TitleQty {
+  height: 10%;
+  display: flex;
+  justify-content: space-between;
+  bottom: 0;
+  padding: 0 5%;
 }
 @media screen and (max-width: 1440px) {
   .StoreFrontBanner {
@@ -70,7 +105,6 @@
   }
   .TopCategories > * {
     margin: 10px !important;
-    width: 200px !important;
   }
 }
 @media screen and (max-width: 500px) {
@@ -79,10 +113,6 @@
   }
   h3 {
     font-size: 1.5em !important;
-  }
-  .TopCategories {
-    display: flex;
-    justify-content: space-between;
   }
   .TopCategoriesContainer {
     margin-top: 50px !important;

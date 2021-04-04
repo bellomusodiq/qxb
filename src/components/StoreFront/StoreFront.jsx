@@ -1,18 +1,41 @@
 import React, { useEffect, useState } from "react";
 import { Col, Row } from "antd";
 import "./StoreFront.css";
-import Collections from "../Collections/Collections";
-import { DefaultButton } from "../UI/Buttons/Buttons";
-import ItemInfo from "../UI/ItemInfo/ItemInfo";
 import FeatureCategory from "../UI/FeatureCategory/FeatureCategory";
 import CollectionBanner from "./CollectionBanner/CollectionBanner";
-import BlogList from "./BlogList/BlogList";
 import CatalogueBanner from "../UI/CatalogueBanner/CatalogueBanner";
 import axios from "axios";
 import { BASE_URL } from "../../CONFIG";
 import Loader from "../UI/Loader/Loader";
 import ErrorComponent from "../UI/ErrorComponent/ErrorComponent";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import Slider from "../UI/Slider/Slider";
+
+const Category = ({ image, title, quantity, link }) => (
+  <Link to={link}>
+    <div className="CategoryContainer">
+      <div>
+        <img src={image} alt="category" />
+        <div className="TitleQty">
+          <p>{title}</p>
+          <p>{quantity}</p>
+        </div>
+      </div>
+    </div>
+  </Link>
+);
+
+const ImageSlider = ({ src, content }) => (
+  <div
+    className="StoreFrontBanner"
+    style={{
+      backgroundImage: `url(${src})`,
+      width: "100%",
+    }}
+  >
+    {content}
+  </div>
+);
 
 const StoreFront = () => {
   const [category, setCategory] = useState(null);
@@ -26,6 +49,7 @@ const StoreFront = () => {
   const [blogs, setBlogs] = useState(null);
   const [loadingBlogs, setLoadingBlogs] = useState(false);
   const [blogsError, setBlogsError] = useState(false);
+  const [bannerImages, setBannerImages] = useState([]);
 
   const history = useHistory();
 
@@ -111,7 +135,18 @@ const StoreFront = () => {
       });
   };
 
+  const fetchBanner = () => {
+    const url = `${BASE_URL}/api/banner-images/`;
+    axios.get(url).then((res) => {
+      const images = res.data.map((item) => ({
+        children: () => <ImageSlider src={item.image} />,
+      }));
+      setBannerImages(images);
+    });
+  };
+
   const fetchContents = () => {
+    fetchBanner();
     fetchCategory();
     fetchBlogs();
     fetchCollections();
@@ -126,13 +161,12 @@ const StoreFront = () => {
   let categories;
   if (category) {
     categories = category.map((item) => (
-      <ItemInfo
-        title={item.title}
-        image={item.image}
-        stockCount={item.total_stock}
+      <Category
         key={item.id}
-        id={item.title}
-        isCollection={false}
+        image={item.image}
+        title={item.title}
+        quantity={item.total_stock}
+        link={`/catalogue/${item.title}`}
       />
     ));
   }
@@ -152,11 +186,11 @@ const StoreFront = () => {
               <Collections data={collections} />
             </Col> */}
             <Col md={24} lg={24}>
-              <div className="StoreFrontBanner">
+              {/* <div className="StoreFrontBanner">
                 <h1>
                   QxB
                   <br />
-                  Collect<span>io</span>ns
+                  Collections
                 </h1>
                 <DefaultButton
                   background="black"
@@ -165,7 +199,8 @@ const StoreFront = () => {
                 >
                   DISCOVER MORE
                 </DefaultButton>
-              </div>
+              </div> */}
+              <Slider content={bannerImages} />
             </Col>
           </Row>
           <Row>

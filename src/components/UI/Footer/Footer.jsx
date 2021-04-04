@@ -5,7 +5,7 @@ import "./Footer.css";
 
 const year = new Date().getFullYear();
 
-const Footer = () => {
+const Footer = ({ socials }) => {
   const [active, setActive] = useState("");
 
   return (
@@ -21,19 +21,19 @@ const Footer = () => {
             onMouseLeave={() => setActive("")}
             className={active === "social" ? "FooterItems" : ""}
           >
-            <a href="#home">
+            <a href={socials.instagram}>
               <i className="fab fa-instagram"></i> <span>Instagram</span>
             </a>
-            <a href="#home">
+            <a href={socials.twitter}>
               <i className="fab fa-twitter"></i> <span>Twitter</span>
             </a>
-            <a href="#home">
+            <a href={socials.facebook}>
               <i className="fab fa-facebook"></i> <span>Facebook</span>
             </a>
-            <a href="#home">
+            <a href={socials.youtube}>
               <i className="fab fa-youtube"></i> <span>Youtube</span>
             </a>
-            <a href="#home">
+            <a href={socials.pintrest}>
               <i className="fab fa-pinterest"></i> <span>Pinterest</span>
             </a>
           </div>

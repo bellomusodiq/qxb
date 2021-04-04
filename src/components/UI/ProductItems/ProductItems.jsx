@@ -2,7 +2,7 @@ import React from "react";
 import ProductItem from "./ProductItem/ProductItem";
 import "./ProductItems.css";
 
-const ProductItems = ({ data }) => {
+const ProductItems = ({ data, hidePrices=false }) => {
   return (
     <div className="ProductItems">
       {data?.map((item) => (
@@ -14,6 +14,7 @@ const ProductItems = ({ data }) => {
           reviewsCount={item.reviews_count}
           image={item.image}
           id={item.id}
+          hidePrices={hidePrices}
         />
       ))}
     </div>

@@ -18,6 +18,7 @@ const ProductItem = ({
   title,
   price,
   id,
+  hidePrices = false,
 }) => {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -112,14 +113,16 @@ const ProductItem = ({
               </div>
               <div className="PriceCarts">
                 <div className="Price">
-                  <h2>$ {price}</h2>
+                  {!hidePrices ? <h2>$ {price}</h2> : null}
                 </div>
                 {localStorage.getItem("token") ? (
                   <div className="Carts">
                     <CircleButton
                       onClick={toggleFavourite}
                       background="black"
-                      classNames={!inFavourites() ? "Favourite" : "RemoveFavourite"}
+                      classNames={
+                        !inFavourites() ? "Favourite" : "RemoveFavourite"
+                      }
                     >
                       <div className="Badged">
                         <i

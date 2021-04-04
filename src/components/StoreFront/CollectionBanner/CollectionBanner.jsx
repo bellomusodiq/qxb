@@ -6,14 +6,14 @@ const CollectionBanner = () => {
   return (
     <div className="CollectionBanner">
       <div className="CollectionBanner1">
-        <h1>QxB Winter Collection</h1>
+        <h1></h1>
       </div>
       <div>
         <div className="CollectionBanner2">
           <img src={Banner2} alt="banner 2" />
         </div>
         <div className="CollectionBanner3">
-          <h3>QxB Collection</h3>
+          <h3></h3>
         </div>
       </div>
     </div>
