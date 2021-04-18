@@ -74,7 +74,7 @@ const Signup = () => {
         error={error}
       />
       <Row justify="space-between">
-        <Col md={11}>
+        <Col sm={24} md={11}>
           <Form
             ref={formRef}
             onFinish={signup}

@@ -32,6 +32,9 @@
     padding: 15px 10%;
     margin: 50px 0;
   }
+  .Signup > div > div {
+    width: 100%;
+  }
   .AlternateSignin {
     margin-top: 50px;
   }

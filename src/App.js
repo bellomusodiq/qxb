@@ -26,6 +26,9 @@ import { BASE_URL } from "./CONFIG";
 import axios from "axios";
 import Payment from "./components/Payment/Payment";
 import OrdersDetail from "./components/Accounts/Orders/OrdersDetail";
+import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
+import ResetPassword from "./components/ResetPassword/ResetPassword";
+import VerifyToken from "./components/VerifyToken/VerifyToken";
 
 export const fetchCartItems = (dispatch, newUrl = null) => {
   const cartId = localStorage.getItem("cartId");
@@ -90,9 +93,12 @@ function App() {
 
   useEffect(() => {
     getSocials();
-    fetchCart(dispatch);
     getFavourites(history, dispatch, true);
   }, []);
+
+  useEffect(() => {
+    fetchCart(dispatch);
+  }, [localStorage.getItem("cartId")]);
 
   return (
     <div className="App">
@@ -110,6 +116,9 @@ function App() {
           <Route path="/accounts" component={Accounts} />
           <Route path="/checkout" component={Checkout} />
           <Route path="/signup" component={Signup} />
+          <Route path="/forgot-password" component={ForgotPassword} />
+          <Route path="/reset-password" component={ResetPassword} />
+          <Route path="/verify-reset-token" component={VerifyToken} />
           <Route path="/login" component={Login} />
           <Route path="/payments" component={Payment} />
           <Route path="/" component={StoreFront} exact />

@@ -9,39 +9,37 @@ import Alert from "../UI/Alert/Alert";
 import { fetchCartItems } from "../../App";
 import { useDispatch } from "react-redux";
 
-const Login = () => {
+const ResetPassword = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
+  const [confirmPasswordError, setConfirmPasswordError] = useState(false);
 
   const history = useHistory();
   const location = useLocation();
   const dispatch = useDispatch();
 
-  const login = (data) => {
-    const url = `${BASE_URL}/api/login/`;
+  const resetPassword = (data) => {
+    if (data.password.trim() !== data.confirmPassword.trim()) {
+      setConfirmPasswordError(true);
+      return;
+    }
+    const token = new URLSearchParams(location.search).get("token");
+    const url = `${BASE_URL}/api/reset-password/`;
     setLoading(true);
     setSuccess(false);
     setError(false);
+    setConfirmPasswordError(false);
     axios
-      .post(url, data)
-      .then((result) => {
+      .post(url, {...data, token })
+      .then(() => {
         setLoading(false);
         setSuccess(true);
         setShowAlert(true);
-        localStorage.setItem("token", result.data.token);
-        localStorage.setItem("userId", result.data.user_id);
-        localStorage.setItem("cartId", result.data.cart_id);
-        fetchCartItems(dispatch);
         setTimeout(() => {
           setShowAlert(false);
-          const params = new URLSearchParams(location.search);
-          if (params.has("next")) {
-            history.push(params.get("next"));
-          } else {
-            history.push("/");
-          }
+          history.push("/login");
         }, 3000);
       })
       .catch(() => {
@@ -59,33 +57,26 @@ const Login = () => {
       <Alert
         message={
           success
-            ? "login was successful, redirecting"
+            ? "password changed succesfully, redirecting"
             : "something went wrong, try again"
         }
         show={showAlert}
         error={error}
       />
       <Row justify="space-between">
-        <Col md={11}>
-          <Form onFinish={login}>
+        <Col sm={24} md={11}>
+          <h3 style={{ margin: "50px 0" }}>Enter new password</h3>
+          <Form onFinish={resetPassword}>
             {error ? (
               <p className="PasswordMatch">
-                email and/or password is incorrect
+                token is invalid
               </p>
             ) : null}
-            <Form.Item
-              rules={[{ required: true }]}
-              name="username"
-              placeholder="email"
-            >
-              <Input
-                name="username"
-                type="email"
-                className="custom-form"
-                placeholder="Email *"
-                required
-              />
-            </Form.Item>
+            {confirmPasswordError ? (
+              <p className="PasswordMatch">
+                password do not match
+              </p>
+            ) : null}
             <Form.Item
               rules={[{ required: true }]}
               name="password"
@@ -99,19 +90,22 @@ const Login = () => {
                 required
               />
             </Form.Item>
-            <Form.Item name="is_notify">
-              <Checkbox>
-                Let me know about discounts, sales and new promotions
-              </Checkbox>
+            <Form.Item
+              rules={[{ required: true }]}
+              name="confirmPassword"
+              placeholder="password"
+            >
+              <Input
+                name="password"
+                type="password"
+                className="custom-form"
+                placeholder="Confirm Password *"
+                required
+              />
             </Form.Item>
-            <p>
-              <Link style={{ color: "#2196f3" }} to="/forgot-password">
-                Forgot Password
-              </Link>
-            </p>
             <div className="SignupButton">
               <DefaultButton loading={loading} type="submit" background="white">
-                LOGIN
+                RESET PASSWORD
               </DefaultButton>
             </div>
           </Form>
@@ -136,4 +130,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default ResetPassword;

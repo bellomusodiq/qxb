@@ -59,7 +59,9 @@ const Payment = () => {
       .then((res) => {
         setLoading(false);
         setError(false);
-        localStorage.removeItem("cartId");
+        axios.post(`${BASE_URL}/api/cart/`, {}).then((res) => {
+          localStorage.setItem("cartId", res.data.id);
+        })
         dispatch(
           updateCarts({
             loading: false,

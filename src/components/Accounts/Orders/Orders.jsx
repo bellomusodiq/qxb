@@ -6,6 +6,8 @@ import { BASE_URL } from "../../../CONFIG";
 import Pagination from "../../UI/Pagination/Pagination";
 import axios from "axios";
 import Alert from "../../UI/Alert/Alert";
+import { fetchCart } from "../../../App";
+import { useDispatch } from "react-redux";
 
 const Orders = () => {
   const [loading, setLoading] = useState(false);
@@ -15,6 +17,7 @@ const Orders = () => {
   const [previous, setPrevious] = useState();
 
   const location = useLocation();
+  const dispatch = useDispatch();
 
   const columns = [
     {
@@ -62,8 +65,11 @@ const Orders = () => {
       subTotal: item.sub_total,
     }));
 
-  const fetchOrder = (newUrl = null) => {
+  const fetchOrder = async (newUrl = null) => {
     const id = location.pathname.split("/")[3];
+    axios.post(`${BASE_URL}/api/cart/`, {}).then((res) => {
+      localStorage.setItem("cartId", res.data.id);
+    });
     const token = localStorage.getItem("token");
     let url = `${BASE_URL}/api/order-items/?order=${id}`;
     if (newUrl) {
@@ -88,7 +94,7 @@ const Orders = () => {
         setTimeout(() => {
           setError(false);
         }, 3000);
-      });
+      })
   };
 
   useEffect(() => {

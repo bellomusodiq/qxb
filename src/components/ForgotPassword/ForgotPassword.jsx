@@ -9,7 +9,7 @@ import Alert from "../UI/Alert/Alert";
 import { fetchCartItems } from "../../App";
 import { useDispatch } from "react-redux";
 
-const Login = () => {
+const ForgotPassword = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -19,30 +19,15 @@ const Login = () => {
   const location = useLocation();
   const dispatch = useDispatch();
 
-  const login = (data) => {
-    const url = `${BASE_URL}/api/login/`;
+  const forgotPassword = (data) => {
+    const url = `${BASE_URL}/api/send-reset-token/`;
     setLoading(true);
     setSuccess(false);
     setError(false);
     axios
       .post(url, data)
       .then((result) => {
-        setLoading(false);
-        setSuccess(true);
-        setShowAlert(true);
-        localStorage.setItem("token", result.data.token);
-        localStorage.setItem("userId", result.data.user_id);
-        localStorage.setItem("cartId", result.data.cart_id);
-        fetchCartItems(dispatch);
-        setTimeout(() => {
-          setShowAlert(false);
-          const params = new URLSearchParams(location.search);
-          if (params.has("next")) {
-            history.push(params.get("next"));
-          } else {
-            history.push("/");
-          }
-        }, 3000);
+        history.push('/verify-reset-token')
       })
       .catch(() => {
         setLoading(false);
@@ -59,7 +44,7 @@ const Login = () => {
       <Alert
         message={
           success
-            ? "login was successful, redirecting"
+            ? ""
             : "something went wrong, try again"
         }
         show={showAlert}
@@ -67,51 +52,31 @@ const Login = () => {
       />
       <Row justify="space-between">
         <Col md={11}>
-          <Form onFinish={login}>
+          <h3 style={{ margin: "50px 0" }}>
+            Enter you email to reset your password
+          </h3>
+          <Form onFinish={forgotPassword}>
             {error ? (
               <p className="PasswordMatch">
-                email and/or password is incorrect
+                account with this email does not exist
               </p>
             ) : null}
             <Form.Item
               rules={[{ required: true }]}
-              name="username"
+              name="email"
               placeholder="email"
             >
               <Input
-                name="username"
+                name="email"
                 type="email"
                 className="custom-form"
                 placeholder="Email *"
                 required
               />
             </Form.Item>
-            <Form.Item
-              rules={[{ required: true }]}
-              name="password"
-              placeholder="password"
-            >
-              <Input
-                name="password"
-                type="password"
-                className="custom-form"
-                placeholder="Password *"
-                required
-              />
-            </Form.Item>
-            <Form.Item name="is_notify">
-              <Checkbox>
-                Let me know about discounts, sales and new promotions
-              </Checkbox>
-            </Form.Item>
-            <p>
-              <Link style={{ color: "#2196f3" }} to="/forgot-password">
-                Forgot Password
-              </Link>
-            </p>
             <div className="SignupButton">
               <DefaultButton loading={loading} type="submit" background="white">
-                LOGIN
+                RESET PASSWORD
               </DefaultButton>
             </div>
           </Form>
@@ -136,4 +101,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default ForgotPassword;

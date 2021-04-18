@@ -11,10 +11,11 @@ const AutoPlay = ({ content = [], slidesToShow = 1 }) => {
     speed: 1000,
     autoplaySpeed: 3000,
     cssEase: "linear",
+    arrows: false
   };
 
   return (
-    <div>
+    <div style={{width: '100%', boxSizing: 'border-box'}} >
       <Slider {...settings}>
         {content.map((item, i) => (
           <div key={i}>

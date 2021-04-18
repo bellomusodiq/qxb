@@ -19,7 +19,7 @@ const OrdersDetail = () => {
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [data, setData] = useState(false);
+  const [data, setData] = useState();
   const [contact, setContact] = useState();
 
   const columns = [

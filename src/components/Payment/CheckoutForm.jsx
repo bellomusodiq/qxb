@@ -6,6 +6,7 @@ import axios from "axios";
 import { Table } from "antd";
 import { useHistory } from "react-router";
 import { updateCarts } from "../../store/actions/carts";
+import { fetchCart } from "../../App";
 
 export default function CheckoutForm() {
   const [succeeded, setSucceeded] = useState(false);
@@ -91,7 +92,9 @@ export default function CheckoutForm() {
           postal_code: account.postal,
         })
         .then((res) => {
-          localStorage.removeItem("cartId");
+          axios.post(`${BASE_URL}/api/cart/`, {}).then((res) => {
+            localStorage.setItem("cartId", res.data.id);
+          })
           dispatch(
             updateCarts({
               loading: false,
