@@ -60,32 +60,7 @@
   font-size: 1.8em;
 }
 @media screen and (max-width: 500px) {
-  .CollectionBanner {
-    flex-direction: column;
-  }
-  .CollectionBanner1, .CollectionBanner2, .CollectionBanner3 {
-    width: 100%;
-    height: 150px;
-  }
-  .CollectionBanner > div:not(.CollectionBanner1) {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: stretch;
-  }
   .CollectionBanner1 {
     height: 150px;
-  }
-  .CollectionBanner1 > h1 {
-    font-size: 1.8em;
-    width: 60%;
-  }
-  .CollectionBanner2 {
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-  .CollectionBanner3 > h3 {
-    font-size: 1em !important;
   }
 }

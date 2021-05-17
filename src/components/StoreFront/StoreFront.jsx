@@ -179,13 +179,13 @@ const StoreFront = () => {
   } else if (bestSeller && newArrivals && blogs) {
     bodyContent = (
       <>
-        <CatalogueBanner show={window.screen.width <= 480} />
+        {/* <CatalogueBanner show={window.screen.width <= 480} /> */}
         <div className="StoreFront">
           <Row gutter={{ md: 0, lg: 10, xl: 0 }} justify="stretch">
             {/* <Col xs={0} lg={7}>
               <Collections data={collections} />
             </Col> */}
-            <Col md={24} lg={24}>
+            <Col md={24} lg={24} sm={24}>
               {/* <div className="StoreFrontBanner">
                 <h1>
                   QxB

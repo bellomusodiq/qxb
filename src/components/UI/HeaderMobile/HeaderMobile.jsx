@@ -55,11 +55,11 @@ const HeaderMobile = ({ openSideNav }) => {
             <CircleButton onClick={() => setOpenSearch(!openSearch)}>
               <i className="fas fa-search fa-1x"></i>
             </CircleButton>
-            {/* <Link to="/accounts">
+            <Link to="/accounts">
               <CircleButton>
                 <i className="far fa-user fa-1x"></i>
               </CircleButton>
-            </Link> */}
+            </Link>
             {localStorage.getItem("userId") ? (
               <Link to="/accounts/favourites">
                 <CircleButton>

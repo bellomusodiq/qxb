@@ -110,7 +110,7 @@
 }
 @media screen and (max-width: 500px) {
   .StoreFrontBanner {
-    display: none;
+    height: 200px !important;
   }
   h3 {
     font-size: 1.5em !important;
